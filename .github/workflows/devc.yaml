@@ -6,6 +6,12 @@ on:
   pull_request:
   push:
     branches: [ "step-*" ]
+
+env: 
+    IMAGE_NAME: milung/wac-devc-ufe
+    IMAGE_TAG: ${{ github.ref_name }}
+    PLATFORM: linux/amd64,linux/arm64
+
 jobs:
 
   build:
@@ -30,7 +36,7 @@ jobs:
         node-version: 20
 
     - name: Install devcontainer
-      run: npm install -g @devcontainer/cli
+      run: npm install -g @devcontainers/cli 
     
     - name: Login to Docker Hub
       if: github.event_name != 'pull_request'
@@ -39,11 +45,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    
     - name: Pre-Build Dev Container
-      run: devcontainer build --workspace-folder . --platform "linux/amd64,linux/arm64" --image-name milung/wac-devc-ufe:${{ github.ref_name }}  --push
+      run: devcontainer build --workspace-folder . --platform $PLATFORM --image-name $IMAGE_NAME:$IMAGE_TAG  --push
       
-    #   with:        
-    #     imageName: docker.io/milung/wac-devc-ufe
-    #     imageTag: ${{ github.ref_name }}
-    #     platform: linux/amd64,linux/arm64
+ 
     
