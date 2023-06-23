@@ -33,10 +33,9 @@ jobs:
 
     - name: Build and run Dev Container task
       uses: devcontainers/ci@v0.3
-      env:
-        BUILDX_NO_DEFAULT_ATTESTATIONS: 0
+      
       with:        
-        imageName: milung/wac-devc-ufe
+        imageName: docker.io/milung/wac-devc-ufe
         imageTag: ${{ github.ref_name }}
         platform: linux/amd64,linux/arm64
     
