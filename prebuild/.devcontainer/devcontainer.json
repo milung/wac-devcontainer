@@ -1,11 +1,12 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-	"name": "Node.js & TypeScript",
+	"name": "wac-devcontainer",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"build": {
 		"dockerfile": "Dockerfile",
-		"args": { }
+		"args": { },
+		"context": ".."
 	},
 	"features": {
 		"ghcr.io/wxw-matt/devcontainer-features/command_runner:latest": {},
@@ -26,8 +27,10 @@
 		"vscode": {
 			"extensions": [
 				"dbaeumer.vscode-eslint"
-			]
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "pwsh"
+			}
 		}
-
 	}
 }
