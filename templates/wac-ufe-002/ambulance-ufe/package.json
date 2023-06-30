@@ -26,15 +26,15 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@material/web": "^1.0.0-pre.11",
-    "@stencil/core": "^3.0.0"
+    "@material/web": "^1.0.0-pre.12",
+    "@stencil/core": "^4.0.0"
   },
   "devDependencies": {
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.11",
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
-    "puppeteer": "^19.5.2"
+    "puppeteer": "^20.7.3"
   },
   "license": "MIT"
 }
