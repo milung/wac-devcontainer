@@ -61,19 +61,19 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Get the version
-      if: github.event_name == 'tag'
+      if: startsWith(github.ref, 'refs/tags/v')
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
 
     
     - name: Replace version in templates
-      if: github.event_name == 'tag'
+      if: startsWith(github.ref, 'refs/tags/v')
       run: |
         sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${{ steps.get_version.outputs.VERSION }}\"/g" templates/**/devcontainer-template.json
 
     - name: Publish Templates
       continue-on-error: true
-      if: github.event_name == 'tag'
+      if: startsWith(github.ref, 'refs/tags/v')
       run: devcontainer templates publish -r registry-1.docker.io -n milung ./templates
 
     - name: Pre-Build Dev Container
