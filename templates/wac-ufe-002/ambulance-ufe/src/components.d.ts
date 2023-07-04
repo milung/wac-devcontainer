@@ -6,8 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface AmbulanceWlList {
-    }
     interface MyComponent {
         /**
           * The first name
@@ -22,28 +20,28 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface PfxAmbulanceWlList {
+    }
 }
 declare global {
-    interface HTMLAmbulanceWlListElement extends Components.AmbulanceWlList, HTMLStencilElement {
-    }
-    var HTMLAmbulanceWlListElement: {
-        prototype: HTMLAmbulanceWlListElement;
-        new (): HTMLAmbulanceWlListElement;
-    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLPfxAmbulanceWlListElement extends Components.PfxAmbulanceWlList, HTMLStencilElement {
+    }
+    var HTMLPfxAmbulanceWlListElement: {
+        prototype: HTMLPfxAmbulanceWlListElement;
+        new (): HTMLPfxAmbulanceWlListElement;
+    };
     interface HTMLElementTagNameMap {
-        "ambulance-wl-list": HTMLAmbulanceWlListElement;
         "my-component": HTMLMyComponentElement;
+        "pfx-ambulance-wl-list": HTMLPfxAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
-    interface AmbulanceWlList {
-    }
     interface MyComponent {
         /**
           * The first name
@@ -58,17 +56,19 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface PfxAmbulanceWlList {
+    }
     interface IntrinsicElements {
-        "ambulance-wl-list": AmbulanceWlList;
         "my-component": MyComponent;
+        "pfx-ambulance-wl-list": PfxAmbulanceWlList;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "ambulance-wl-list": LocalJSX.AmbulanceWlList & JSXBase.HTMLAttributes<HTMLAmbulanceWlListElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "pfx-ambulance-wl-list": LocalJSX.PfxAmbulanceWlList & JSXBase.HTMLAttributes<HTMLPfxAmbulanceWlListElement>;
         }
     }
 }

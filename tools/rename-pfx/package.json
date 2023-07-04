@@ -2,7 +2,7 @@
   "name": "rename-pfx",
   "version": "1.0.0",
   "description": "Scriptto rename prefixes in the WAC micro Front end",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
     "compile:check": "tsc --noEmit",
     "bundle": "node ./build/bundle.mjs",

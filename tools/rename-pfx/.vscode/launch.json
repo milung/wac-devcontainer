@@ -11,9 +11,10 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/dist/index.js",
-            "cwd": "${workspaceFolder}/../../templates/wac-ufe-1",
-            "args": ["--new-prefix", "milung"]
+            "program": "${workspaceFolder}/dist/index.mjs",
+            "cwd": "${workspaceFolder}/../../../wac-test/ambulance-ufe",
+            "args": ["--new-prefix", "milung"],
+            
         }
     ]
 }

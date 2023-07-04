@@ -2,11 +2,12 @@ import * as esbuild from 'esbuild'
 
 
 const config = {
-  entryPoints: ['src/rename.ts'],
+  entryPoints: ['src/rename.mts'],
   bundle: true,
-  outfile: 'dist/index.js',
+  outfile: 'dist/index.mjs',
   platform: 'node',
   sourcemap: true,
+  format: 'esm',
 }
 
 
