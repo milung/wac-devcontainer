@@ -1,0 +1,11 @@
+{
+    "id": "wac-ufe-004a",
+    "version": "1.0.1",
+    "name": "WAC uFe (Step 004a)",
+    "description": "WAC FE: Kontajnerizácia aplikácie",
+    "documentationURL": "https://wac-fiit.milung.eu/dojo/01.Web-Components/004a-ufe-containerization",
+    
+    "platforms": [
+        "Any"
+    ]
+}

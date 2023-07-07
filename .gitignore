@@ -1,3 +1,4 @@
 **/node_modules
 ambulance-ufe/www
 **/.devc-tools
+.cache/

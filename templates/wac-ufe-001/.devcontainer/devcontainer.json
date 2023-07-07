@@ -1,7 +1,21 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-	"name": "wac-ufe-0",
-	"image": "milung/wac-devcontainer:dev",
-	"features": {}
+	"name": "wac-tutoria (uFe.001)",
+	"image": "milung/wac-devcontainer",
+	"features": {},
+	"initializeCommand": "docker pull milung/wac-devcontainer",
+	// Mounting intermediate files (node_modules, www, ... ) as volumes is recommended 
+	// when using Docker Desktop for Mac or Windows - speeds up compilation and installs.
+	"mounts": [
+		"source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/ambulance-ufe/node_modules,type=volume",
+		"source=${localWorkspaceFolderBasename}-dist,target=${containerWorkspaceFolder}/ambulance-ufe/dist,type=volume",
+		"source=${localWorkspaceFolderBasename}-www,target=${containerWorkspaceFolder}/ambulance-ufe/www,type=volume",
+		"source=${localWorkspaceFolderBasename}-stencil,target=${containerWorkspaceFolder}/ambulance-ufe/.stencil,type=volume"
+	],
+	// must chovn attached volumes to node user
+	"postCreateCommand": "sudo chown node ambulance-ufe/node_modules ambulance-ufe/www ambulance-ufe/dist ambulance-ufe/.stencil",
+	"containerEnv": {
+		"PUPPETEER_SKIP_DOWNLOAD": "true"
+	}
 }

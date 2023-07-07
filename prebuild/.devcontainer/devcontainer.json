@@ -37,7 +37,9 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"dbaeumer.vscode-eslint"
+				"dbaeumer.vscode-eslint",
+				"github.vscode-github-actions"
+
 			],
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "pwsh"
