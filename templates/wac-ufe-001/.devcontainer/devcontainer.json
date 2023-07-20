@@ -15,7 +15,5 @@
 	],
 	// must chovn attached volumes to node user
 	"postCreateCommand": "sudo chown node ambulance-ufe/node_modules ambulance-ufe/www ambulance-ufe/dist ambulance-ufe/.stencil",
-	"containerEnv": {
-		"PUPPETEER_SKIP_DOWNLOAD": "true"
-	}
+	
 }
