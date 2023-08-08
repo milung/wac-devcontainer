@@ -1,0 +1,55 @@
+{
+  "name": "ambulance-ufe",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "type": "module",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/ambulance-ufe/ambulance-ufe.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ionic-team/stencil-component-starter.git"
+  },
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "convert-openapi": "js-yaml  ./api/ambulance-wl.openapi.yaml > .openapi.json",
+    "mock-api": "open-api-mocker --schema .openapi.json --port 5000",
+    "start:app": "stencil build --dev --watch --serve",
+    "start:mock": "run-s convert-openapi mock-api",
+    "start": "run-p start:mock start:app",
+    "build": "stencil build --docs",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate",
+    "openapi": "openapi-generator-cli generate"
+  },
+  "dependencies": {
+    "@material/web": "^1.0.0-pre.14",
+    "@stencil/core": "^4.0.0",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+"@babel/preset-env": "^7.22.9",
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.11",
+    "axios-mock-adapter": "^1.21.5",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1",
+    "js-yaml": "^4.1.0",
+    "npm-run-all": "^4.1.5",
+    "open-api-mocker": "^2.0.0",
+    "ts-jest": "^27.1.4",
+    "puppeteer": "^20.7.4"
+  },
+  "license": "MIT"
+}

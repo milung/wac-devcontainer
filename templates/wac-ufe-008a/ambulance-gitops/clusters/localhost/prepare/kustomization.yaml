@@ -5,9 +5,6 @@ resources:
 - namespace.yaml                            # namespace je tiež zdrojom 
 - ../../../infrastructure/ufe-controller       # kustomization pre ufe-controller
 - ../../../infrastructure/fluxcd
-   
-commonLabels:
-  app.kubernetes.io/part-of: wac-hospital
 
    
 patches: 

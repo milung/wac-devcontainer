@@ -46,8 +46,10 @@
 		"vscode": {
 			"extensions": [
 				"dbaeumer.vscode-eslint",
-				"github.vscode-github-actions"
-
+				"github.vscode-github-actions",
+				"mermade.openapi-lint",
+				"philosowaffle.openapi-designer",
+				"natemoo-re.vscode-stencil-tools"
 			],
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "pwsh"

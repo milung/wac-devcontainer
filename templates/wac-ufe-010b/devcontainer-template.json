@@ -1,0 +1,11 @@
+{
+    "id": "wac-ufe-010b",
+    "version": "1.0.1",
+    "name": "WAC uFe (Step 010b)",
+    "description": "WAC FE:API pre úpravu záznamov",
+    "documentationURL": "http://localhost:3380/dojo/01.Web-Components/010b-crud-api",
+    
+    "platforms": [
+        "Any"
+    ]
+}   
