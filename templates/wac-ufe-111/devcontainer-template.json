@@ -1,0 +1,11 @@
+{
+    "id": "wac-ufe-111",
+    "version": "1.0.1",
+    "name": "WAC uFe (Step 111)",
+    "description": "WAC FE: Nasadenie aplikácie na produkčný kubernetes klaster",
+    "documentationURL": "http://localhost:3380/dojo/01.Web-Components/111-production-deployment",
+    
+    "platforms": [
+        "Any"
+    ]
+}   

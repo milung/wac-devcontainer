@@ -1,0 +1,11 @@
+{
+    "id": "wac-ufe-060",
+    "version": "1.0.1",
+    "name": "WAC uFe (Step 060)",
+    "description": "WAC FE: Nasadenie do klastra kubernetes",
+    "documentationURL": "https://wac-fiit.milung.eu/dojo/01.Web-Components/060-kubernetes",
+    
+    "platforms": [
+        "Any"
+    ]
+}

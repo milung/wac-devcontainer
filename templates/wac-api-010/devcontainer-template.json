@@ -1,0 +1,11 @@
+{
+    "id": "wac-api-010",
+    "version": "1.0.1",
+    "name": "WAC api (Step 010)",
+    "description": "WAC API: Kostra aplikácie",
+    "documentationURL": "http://localhost:3380/dojo/02.WebApi-Go/010-skeleton",
+    
+    "platforms": [
+        "Any"
+    ]
+}   

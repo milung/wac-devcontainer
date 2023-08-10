@@ -1,0 +1,11 @@
+{
+    "id": "wac-ufe-081",
+    "version": "1.0.1",
+    "name": "WAC uFe (Step 081)",
+    "description": "WAC FE: Kontinuálne nasadenie pomocou nástroja Flux",
+    "documentationURL": "http://localhost:3380/dojo/01.Web-Components/081-flux",
+    
+    "platforms": [
+        "Any"
+    ]
+}

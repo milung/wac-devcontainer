@@ -1,0 +1,11 @@
+{
+    "id": "wac-ufe-042",
+    "version": "1.0.1",
+    "name": "WAC uFe (Step 042)",
+    "description": "WAC FE: Manuálne nasadenie aplikácie v Microsoft Azure  ",
+    "documentationURL": "https://wac-fiit.milung.eu/dojo/01.Web-Components/042-docker-manual-azure-deployment",
+    
+    "platforms": [
+        "Any"
+    ]
+}
