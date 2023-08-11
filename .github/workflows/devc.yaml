@@ -68,7 +68,7 @@ jobs:
     - name: Copy init script to all template folders
       run: |
         for f in ./templates/* ; do 
-          cp ./prebuild/.devcontainer/init ./prebuild/.devcontainer/init.cmd  $f/.devcontainer/init.sh ; 
+          cp ./prebuild/.devcontainer/init ./prebuild/.devcontainer/init.cmd  $f/.devcontainer/ ; 
           cp ./prebuild/.devcontainer/template.jsonc $f/.devcontainer/devcontainer.json ;
         done
         

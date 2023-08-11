@@ -14,7 +14,10 @@
 		},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},		
 		"ghcr.io/devcontainers-contrib/features/kubectl-asdf:2":{},
-		"ghcr.io/devcontainers-contrib/features/kubectx-kubens:1":{}
+		"ghcr.io/devcontainers-contrib/features/kubectx-kubens:1":{},
+		"ghcr.io/devcontainers/features/go:1": {
+			"version": "1.21"
+		}
 	},
 
 	// Mounting intermediate files (node_modules, www, ... ) as volumes is recommended 
@@ -49,7 +52,8 @@
 				"github.vscode-github-actions",
 				"mermade.openapi-lint",
 				"philosowaffle.openapi-designer",
-				"natemoo-re.vscode-stencil-tools"
+				"natemoo-re.vscode-stencil-tools",
+				"golang.go",
 			],
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "pwsh"
