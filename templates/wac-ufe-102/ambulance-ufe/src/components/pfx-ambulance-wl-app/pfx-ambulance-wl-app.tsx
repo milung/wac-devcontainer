@@ -5,11 +5,11 @@ declare global {
 }
 
 @Component({
-  tag: 'pfx-ambulance-wl-app', // @_pfx_@
-  styleUrl: 'pfx-ambulance-wl-app.css', // @_pfx_@
+  tag: '${templateOption:pfx}-ambulance-wl-app',
+  styleUrl: 'pfx-ambulance-wl-app.css',
   shadow: true,
 })
-export class PfxAmbulanceWlApp { // @_pfx_@
+export class ${templateOption:PfxCamel}AmbulanceWlApp {
 
   @State() private relativePath = "";
 
@@ -29,8 +29,8 @@ export class PfxAmbulanceWlApp { // @_pfx_@
     }
 
     window.navigation?.addEventListener("navigate", (ev: Event) => {
-      if ((ev as any).canIntercept) { (ev as any).intercept(); }
       let path = new URL((ev as any).destination.url).pathname;
+      if ((ev as any).canIntercept) { (ev as any).intercept(); }
       toRelative(path);  
     });
     
@@ -56,12 +56,12 @@ export class PfxAmbulanceWlApp { // @_pfx_@
     return (
       <Host>
         { element === "editor" 
-        ? <pfx-ambulance-wl-editor entry-id={entryId}  // @_pfx_@
-          oneditor-closed={ () => window.navigation.navigate("./list")}
-        ></pfx-ambulance-wl-editor>  // @_pfx_@
-        : <pfx-ambulance-wl-list ambulance-id={this.ambulanceId} api-base={this.apiBase}   // @_pfx_@
-          onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
-          </pfx-ambulance-wl-list>  // @_pfx_@
+        ? <${templateOption:pfx}-ambulance-wl-editor entry-id={entryId}
+          oneditor-closed={ () => navigate("./list")}
+        ></${templateOption:pfx}-ambulance-wl-editor>
+        : <${templateOption:pfx}-ambulance-wl-list
+            onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
+          </${templateOption:pfx}-ambulance-wl-list>
         }
         
       </Host>

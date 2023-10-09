@@ -4,7 +4,19 @@
     "name": "WAC uFe (Step 020)",
     "description": "WAC FE: Vytvorenie repozitára a archivácia kódu",
     "documentationURL": "https://wac-fiit.milung.eu/dojo/01.Web-Components/020-git-repo",
-    
+    "options": {
+        "pfx": {
+            "type": "string",
+            "description": "Your custom prefix for the components and manifests",
+            "default": "pfx"
+        },
+        "PfxCamel": {
+            "type": "string",
+            "description": "Your camel case custom prefix for the components and manifests (e.g. pfx -> Pfx)",
+            "default": "Pfx"
+        }
+    },
+
     "platforms": [
         "Any"
     ]

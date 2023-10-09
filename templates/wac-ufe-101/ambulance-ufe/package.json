@@ -21,20 +21,20 @@
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
+    "test": "stencil test --spec --e2e --port 3535",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@material/web": "^1.0.0-pre.12",
-    "@stencil/core": "^4.0.0"
+    "@material/web": "^${templateOption:materialWebVersion}",
+    "@stencil/core": "^${templateOption:stencilCoreVersion}"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
-    "jest": "^27.5.1",
-    "jest-cli": "^27.5.1",
-    "puppeteer": "^20.7.3"
+    "@types/jest": "^${templateOption:typesJestVersion}",
+    "@types/node": "^${templateOption:typesNodeVersion}",
+    "jest": "^${templateOption:jestVersion}",
+    "jest-cli": "^${templateOption:jestcliVersion}",
+    "puppeteer": "^${templateOption:puppeteerVersion}"
   },
   "license": "MIT"
 }

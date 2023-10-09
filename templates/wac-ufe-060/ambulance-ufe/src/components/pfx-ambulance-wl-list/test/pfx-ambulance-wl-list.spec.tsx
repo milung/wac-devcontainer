@@ -1,14 +1,14 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PfxAmbulanceWlList } from '../pfx-ambulance-wl-list';  // @_pfx_@
+import { ${templateOption:PfxCamel}AmbulanceWlList } from '../pfx-ambulance-wl-list';  
 
-describe('pfx-ambulance-wl-list', () => {  // @_pfx_@
+describe('${templateOption:pfx}-ambulance-wl-list', () => {  
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [PfxAmbulanceWlList],  // @_pfx_@
-      html: `<pfx-ambulance-wl-list></pfx-ambulance-wl-list>`,  // @_pfx_@
+      components: [${templateOption:PfxCamel}AmbulanceWlList], 
+      html: `<${templateOption:pfx}-ambulance-wl-list></${templateOption:pfx}-ambulance-wl-list>`, 
     });
 
-    const wlList = page.rootInstance as PfxAmbulanceWlList; // @_pfx_@
+    const wlList = page.rootInstance as ${templateOption:PfxCamel}AmbulanceWlList;
     const expectedPatients = wlList?.waitingPatients?.length
 
     const items = page.root.shadowRoot.querySelectorAll("md-list-item");

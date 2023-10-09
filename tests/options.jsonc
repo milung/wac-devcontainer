@@ -1,0 +1,32 @@
+{
+    // prefixes
+    "pfx": "test",
+    "PfxCamel": "Test",
+
+    // accounts
+    "dockerhubAccount": "milung",
+    "githubAccount": "milung",
+    "githubPAT": "your PAT",
+
+    // npm versions
+    "axiosMockAdapterVersion": "1.22.0",
+    "axiosVersion": "1.5.1",
+    "babelJestVersion": "27.5.1",
+    "babelPresetEnvVersion": "7.22.20",
+    "jestcliVersion": "27.5.1",
+    "jestVersion": "27.5.1",
+    "jsYamlVersion": "4.1.0",
+    "materialWebVersion": "1.0.0",
+    "npmRunAllVersion": "4.1.5",
+    "openApiGeneratorCliVersion": "2.7.0",
+    "openApiMockerVersion": "2.0.0",
+    "puppeteerVersion": "21.1.1",
+    "stencilCoreVersion": "4.4.0",
+    "tsJestVersion": "27.1.4",
+    "typesJestVersion": "27.5.2",
+    "typesNodeVersion": "16.18.11",
+
+    // docker images
+    "ciNodeVersion": "20.x",
+    "nodeImageTag": "latest",
+}

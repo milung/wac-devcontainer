@@ -8,4 +8,4 @@ resources:                  # zoznam manifestov - zdrojov,
 - webcomponent.yaml
 
 commonLabels:               # značky priradené všetkým zdrojom tejt aplikácie
-  app: pfx-ambulance-ufe # @_pfx_@
+  app: ${templateOption:pfx}-ambulance-ufe # 

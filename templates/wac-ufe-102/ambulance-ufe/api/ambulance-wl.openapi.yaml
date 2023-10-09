@@ -97,7 +97,7 @@ components:
           type: string
           format: url
           example: "https://zdravoteka.sk/priznaky/zvysena-telesna-teplota/"
-          description: Link to encyclopedical explanation of the patient's    condition
+          description: Link to encyclopedical explanation of the patient's condition
         typicalDurationMinutes:
           type: integer
           format: int32

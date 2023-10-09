@@ -1,0 +1,33 @@
+{
+    "id": "wac-api-070",
+    "version": "1.0.1",
+    "name": "WAC api (Step 070)",
+    "description": "Service Mesh - Deployment",
+    "documentationURL": "http://localhost:3380/dojo/02.WebApi-Go/070-deployment",
+
+    "options": {
+        "pfx": {
+            "type": "string",
+            "description": "Your custom prefix for the components and manifests",
+            "default": "pfx"
+        },
+        "PfxCamel": {
+            "type": "string",
+            "description": "Your camel case custom prefix for the components and manifests (e.g. pfx -> Pfx)",
+            "default": "Pfx"
+        },
+        "githubAccount": {
+            "type": "string",
+            "description": "Your github account",
+            "default": "<my-github-account>"
+        },
+        "dockerhubAccount": {
+            "type": "string",
+            "description": "Your Docker Hub account",
+            "default": "<my-dockerhub-account>"
+        }
+    },
+    "platforms": [
+        "Any"
+    ]
+}   

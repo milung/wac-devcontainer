@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PfxAmbulanceWlApp } from '../pfx-ambulance-wl-app'; // // @_pfx_@
+import { ${templateOption:PfxCamel}AmbulanceWlApp } from '../pfx-ambulance-wl-app'; 
 
 describe('pfx-ambulance-wl-app', () => {
   
@@ -7,24 +7,24 @@ describe('pfx-ambulance-wl-app', () => {
     ;
     const page = await newSpecPage({
       url: `http://localhost/entry/@new`,
-      components: [PfxAmbulanceWlApp],  // @_pfx_@
-      html: `<pfx-ambulance-wl-app base-path="/"></pfx-ambulance-wl-app>`, // @_pfx_@
+      components: [${templateOption:PfxCamel}AmbulanceWlApp], 
+      html: `<${templateOption:pfx}-ambulance-wl-app base-path="/"></${templateOption:pfx}-ambulance-wl-app>`,
     });
     page.win.navigation = new EventTarget()
     const child = await page.root.shadowRoot.firstElementChild;
-    expect(child.tagName.toLocaleLowerCase()).toEqual ("pfx-ambulance-wl-editor"); // @_pfx_@
+    expect(child.tagName.toLocaleLowerCase()).toEqual ("${templateOption:pfx}-ambulance-wl-editor");
     
   });
 
   it('renders list', async () => {
     const page = await newSpecPage({
       url: `http://localhost/ambulance-wl/`,
-      components: [PfxAmbulanceWlApp], // @_pfx_@
-      html: `<pfx-ambulance-wl-app base-path="/ambulance-wl/"></pfx-ambulance-wl-app>`, // @_pfx_@
+      components: [${templateOption:PfxCamel}AmbulanceWlApp],
+      html: `<${templateOption:pfx}-ambulance-wl-app base-path="/ambulance-wl/"></${templateOption:pfx}-ambulance-wl-app>`,
     });
     page.win.navigation = new EventTarget()
     const child = await page.root.shadowRoot.firstElementChild;
-    expect(child.tagName.toLocaleLowerCase()).toEqual("pfx-ambulance-wl-list"); // @_pfx_@
+    expect(child.tagName.toLocaleLowerCase()).toEqual("${templateOption:pfx}-ambulance-wl-list");
   });
   
 });

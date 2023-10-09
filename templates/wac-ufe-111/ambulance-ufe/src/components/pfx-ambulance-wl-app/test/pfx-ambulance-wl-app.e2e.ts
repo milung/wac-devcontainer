@@ -1,12 +1,12 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('pfx-ambulance-wl-app', () => {  // @_pfx_@
+describe('${templateOption:pfx}-ambulance-wl-app', () => {
   it('renders', async () => {
     const page = await newE2EPage();
     
-    await page.setContent('<pfx-ambulance-wl-app></pfx-ambulance-wl-app>');  // @_pfx_@
+    await page.setContent('<${templateOption:pfx}-ambulance-wl-app></${templateOption:pfx}-ambulance-wl-app>');
 
-    const element = await page.find('pfx-ambulance-wl-app');  // @_pfx_@
+    const element = await page.find('${templateOption:pfx}-ambulance-wl-app');
     expect(element).toHaveClass('hydrated');
   });
 });

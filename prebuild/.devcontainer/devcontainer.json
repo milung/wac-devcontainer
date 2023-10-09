@@ -28,13 +28,18 @@
 		"source=${localWorkspaceFolderBasename}-www,target=${containerWorkspaceFolder}/ambulance-ufe/www,type=volume",
 		"source=${localWorkspaceFolderBasename}-stencil,target=${containerWorkspaceFolder}/ambulance-ufe/.stencil,type=volume"
 	],
+
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:/usr/local/go/bin"
+	},
+	
 	// copy kube config into container and pull latest image
 	"initializeCommand": [ ".devcontainer/init" ],
 	"postAttachCommand": "mkdir -p ~/.kube && cp ${containerWorkspaceFolder}/.kube/config  ~/.kube/config ",
 
 
 	// must chovn attached volumes to node user
-	"postCreateCommand": "sudo chown node ambulance-ufe/node_modules ambulance-ufe/www ambulance-ufe/dist ambulance-ufe/.stencil",
+	"postCreateCommand": "sudo chown node ambulance-ufe/node_modules ambulance-ufe/www ambulance-ufe/dist ambulance-ufe/.stencil; export PATH=${PATH}:/usr/local/go/bin",
 
 
 	"forwardPorts": [

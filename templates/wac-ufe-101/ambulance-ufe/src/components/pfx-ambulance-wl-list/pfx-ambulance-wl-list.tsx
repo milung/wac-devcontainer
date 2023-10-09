@@ -1,13 +1,13 @@
 import { Component, Event, EventEmitter,  Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'pfx-ambulance-wl-list', // @_pfx_@
-  styleUrl: 'pfx-ambulance-wl-list.css', // @_pfx_@
+  tag: '${templateOption:pfx}-ambulance-wl-list',
+  styleUrl: 'pfx-ambulance-wl-list.css',
   shadow: true,
 })
-export class PfxAmbulanceWlList { // @_pfx_@
+export class ${templateOption:PfxCamel}AmbulanceWlList {
 
-  @Event({ eventName: "entry-clicked"}) entryClicked: EventEmitter<string>
+  @Event({ eventName: "entry-clicked"}) entryClicked: EventEmitter<string>;
 
   waitingPatients: any[]; 
   private async getWaitingPatientsAsync(){  

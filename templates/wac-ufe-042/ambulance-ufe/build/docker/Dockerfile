@@ -1,5 +1,5 @@
 ### compilation stage
-FROM node:latest AS build
+FROM node:${templateOption:nodeImageTag} AS build
 
 RUN mkdir /build
 WORKDIR /build

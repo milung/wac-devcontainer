@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- deployment.yaml
+- service.yaml
+
+configMapGenerator:
+  - name: pfx-ambulance-webapi-mongodb-init # 
+    files:
+      - params/init-db.js
+  - name: pfx-ambulance-webapi-config # 
+    literals:
+      - database=ambulance
+      - collection=ambulance
+

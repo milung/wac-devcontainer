@@ -42,7 +42,7 @@ export interface Condition {
      */
     'code'?: string;
     /**
-     * Link to encyclopedical explanation of the patient\'s    condition
+     * Link to encyclopedical explanation of the patient\'s condition
      * @type {string}
      * @memberof Condition
      */

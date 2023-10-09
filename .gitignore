@@ -2,3 +2,4 @@
 ambulance-ufe/www
 **/.devc-tools
 .cache/
+out/

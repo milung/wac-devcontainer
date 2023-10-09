@@ -3,5 +3,8 @@ kind: Kustomization
 
 namespace: wac-hospital
 
+commonLabels:
+  app.kubernetes.io/part-of: wac-hospital
+
 resources:
-- ../../../apps/pfx-ambulance-ufe # @_pfx_@
+- ../../../apps/pfx-ambulance-ufe

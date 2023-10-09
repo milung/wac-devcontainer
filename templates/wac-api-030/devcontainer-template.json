@@ -1,0 +1,11 @@
+{
+    "id": "wac-api-030",
+    "version": "1.0.1",
+    "name": "WAC api (Step 030)",
+    "description": "WAC API: Testovanie v jazyku GO",
+    "documentationURL": "http://localhost:3380/dojo/02.WebApi-Go/030-mongodb",
+    
+    "platforms": [
+        "Any"
+    ]
+} 

@@ -1,11 +1,11 @@
 import { Component, Host, Prop, State, h, EventEmitter, Event } from '@stencil/core';
 
 @Component({
-  tag: 'pfx-ambulance-wl-editor', // @_pfx_@
-  styleUrl: 'pfx-ambulance-wl-editor.css', // @_pfx_@
+  tag: '${templateOption:pfx}-ambulance-wl-editor',
+  styleUrl: 'pfx-ambulance-wl-editor.css',
   shadow: true,
 })
-export class PfxAmbulanceWlEditor {  // @_pfx_@
+export class ${templateOption:PfxCamel}AmbulanceWlEditor { 
 
   @Prop() entryId: string;
 
@@ -52,11 +52,11 @@ export class PfxAmbulanceWlEditor {  // @_pfx_@
         <md-divider inset></md-divider>
 
         <div class="actions">
-          <md-tonal-button id="delete"
+          <md-filled-tonal-button id="delete"
             onClick={() => this.editorClosed.emit("delete")}>
             <md-icon slot="icon">delete</md-icon>
             Zmazať
-          </md-tonal-button>
+          </md-filled-tonal-button>
           <span class="stretch-fill"></span>
           <md-outlined-button id="cancel"
             onClick={() => this.editorClosed.emit("cancel")}>

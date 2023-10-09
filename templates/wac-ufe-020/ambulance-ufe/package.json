@@ -12,7 +12,7 @@
   "unpkg": "dist/ambulance-ufe/ambulance-ufe.esm.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ionic-team/stencil-component-starter.git"
+    "url": "https://github.com/${templateOption:githubAccount}/ambulance-ufe.git"
   },
   "files": [
     "dist/",
@@ -26,15 +26,15 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@material/web": "^1.0.0-pre.12",
-    "@stencil/core": "^4.0.0"
+    "@material/web": "^${templateOption:materialWebVersion}",
+    "@stencil/core": "^${templateOption:stencilCoreVersion}"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
-    "jest": "^27.5.1",
-    "jest-cli": "^27.5.1",
-    "puppeteer": "^20.7.3"
+    "@types/jest": "^${templateOption:typesJestVersion}",
+    "@types/node": "^${templateOption:typesNodeVersion}",
+    "jest": "^${templateOption:jestVersion}",
+    "jest-cli": "^${templateOption:jestcliVersion}",
+    "puppeteer": "^${templateOption:puppeteerVersion}"
   },
   "license": "MIT"
 }

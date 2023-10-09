@@ -10,4 +10,4 @@ spec:
   secretRef:
     name: repository-pat
   timeout: 1m0s
-  url: https://github.com/pfx/ambulance-gitops # @_pfx_@
+  url: https://github.com/${templateOption:githubAccount}/ambulance-gitops

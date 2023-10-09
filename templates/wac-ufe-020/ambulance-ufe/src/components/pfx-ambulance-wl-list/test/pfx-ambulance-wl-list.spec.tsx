@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PfxAmbulanceWlList } from '../pfx-ambulance-wl-list';  // @_pfx_@
+import { ${templateOption:PfxCamel}AmbulanceWlList } from '../pfx-ambulance-wl-list';  
 
-describe('pfx-ambulance-wl-list', () => {  // @_pfx_@
+describe('${templateOption:pfx}-ambulance-wl-list', () => {  
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [PfxAmbulanceWlList],  // @_pfx_@
-      html: `<pfx-ambulance-wl-list></pfx-ambulance-wl-list>`,  // @_pfx_@
+      components: [${templateOption:PfxCamel}AmbulanceWlList],  
+      html: `<${templateOption:pfx}-ambulance-wl-list></${templateOption:pfx}-ambulance-wl-list>`,  
     });
-    expect(page.root).toEqualHtml(` 
-      <pfx-ambulance-wl-list>` +  /* @_pfx_@ */ + `
+    expect(page.root).toEqualHtml(
+      <${templateOption:pfx}-ambulance-wl-list>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </pfx-ambulance-wl-list>` +  /* @_pfx_@ */ + `
-    `);
+      </${templateOption:pfx}-ambulance-wl-list>
+    );
   });
 });
