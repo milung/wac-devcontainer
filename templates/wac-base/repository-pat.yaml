@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: repository-pat
+  namespace: wac-hospital
+
+type: Opaque
+stringData:
+  username: ${templateOption:githubAccount} # zvyčajne môže byť akékoľvek meno
+  password: ${templateOption:githubPAT} # personal access token

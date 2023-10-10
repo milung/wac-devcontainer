@@ -43,6 +43,11 @@ switch ($command) {
             $template | Add-Member -MemberType NoteProperty -Name version -Value $version
             $template | Add-Member -MemberType NoteProperty -Name options -Value $options
             $template | ConvertTo-Json -Depth 100 | Set-Content -Path "$templateFolder/devcontainer-template.json"
+
+            if ( Test-Path -Path "$templateFolder/ambulance-gitops/clusters/localhost/secrets" ) {
+                # secrets are interacting with .gitignore in template, so needs to be pushed in explicitly before publishing
+                Copy-Item -Path "$ProjectRoot/templates/wac-base/repository-pat.yaml" -Destination "$templateFolder/ambulance-gitops/clusters/localhost/secrets/" -Force
+            } 
         }
     }
 
