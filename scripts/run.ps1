@@ -24,6 +24,28 @@ switch ($command) {
         }
     }
 
+    "unify-templates" {
+        $devcontainerJson = Get-Content -Path "$ProjectRoot/templates/wac-base/.devcontainer/devcontainer.json" -Raw 
+        $template = Get-Content -Path "$ProjectRoot/templates/wac-base/devcontainer-template.json" -Raw | ConvertFrom-Json
+        $options = $template.options
+        $version = $template.version
+        $templateFolders = Get-ChildItem -Path "$ProjectRoot/templates" -Directory | Where-Object { $_.Name -ne "wac-base" }
+
+        
+        foreach ($templateFolder in $templateFolders) {
+            Copy-Item -Path "$ProjectRoot/templates/wac-base/.devcontainer/init" -Destination "$templateFolder/.devcontainer/" -Force
+            Copy-Item -Path "$ProjectRoot/templates/wac-base/.devcontainer/init.cmd" -Destination "$templateFolder/.devcontainer/" -Force
+            $devcontainerPath = "$templateFolder/.devcontainer/devcontainer.json"
+            $devcontainerJson | Set-Content -Path $devcontainerPath
+
+            $template = (Get-Content -Path "$templateFolder/devcontainer-template.json" -Raw | ConvertFrom-Json)
+            $template = $template | Select-Object -Property * -ExcludeProperty options,version
+            $template | Add-Member -MemberType NoteProperty -Name version -Value $version
+            $template | Add-Member -MemberType NoteProperty -Name options -Value $options
+            $template | ConvertTo-Json -Depth 100 | Set-Content -Path "$templateFolder/devcontainer-template.json"
+        }
+    }
+
     default {
         Write-Output "Unknown command: $command"
         throw "Unknown command: $command"

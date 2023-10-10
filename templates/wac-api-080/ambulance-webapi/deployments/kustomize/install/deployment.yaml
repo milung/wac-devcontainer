@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pfx-ambulance-webapi # 
+  name: ${templateOption:pfx}-ambulance-webapi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      pod: pfx-ambulance-webapi-label # 
+      pod: ${templateOption:pfx}-ambulance-webapi-label
   template:
     metadata:
       labels:
-        pod: pfx-ambulance-webapi-label # 
+        pod: ${templateOption:pfx}-ambulance-webapi-label
     spec:
       volumes:
         - name: init-scripts
           configMap:
-            name: pfx-ambulance-webapi-mongodb-init # 
+            name: ${templateOption:pfx}-ambulance-webapi-mongodb-init
       initContainers:
         - name: init-mongodb
           image: mongo:latest
@@ -49,8 +49,8 @@ spec:
               memory: "64Mi"
               cpu: "0.1"
       containers:
-        - name: pfx-ambulance-wl-webapi-container # 
-          image: pfx/ambulance-wl-webapi:latest # 
+        - name: ${templateOption:pfx}-ambulance-wl-webapi-container
+          image: ${templateOption:dockerhubAccount}/ambulance-wl-webapi:latest
           imagePullPolicy: Always
           ports:
             - name: webapi-port

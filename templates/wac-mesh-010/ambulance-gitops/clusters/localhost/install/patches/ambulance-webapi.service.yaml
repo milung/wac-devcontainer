@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: pfx-ambulance-webapi
+  name: ${templateOption:pfx}-ambulance-webapi
 spec:  
   ports:
   - name: http

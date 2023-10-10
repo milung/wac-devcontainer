@@ -7,7 +7,7 @@ info:
   version: "1.0.0"
   title: Waiting List Api
   contact:
-    email: pfx@google.com
+    email: ${templateOption:pfx}@google.com
   license:
     name: CC BY 4.0
     url: "https://creativecommons.org/licenses/by/4.0/"
@@ -23,7 +23,7 @@ paths:
         - ambulanceWaitingList
       summary: Provides the ambulance waiting list
       operationId: getWaitingListEntries
-      description: By using ambulanceId you get list of entries in ambulance    witing  list
+      description: By using ambulanceId you get list of entries in ambulance waiting  list
       parameters:
         - in: path
           name: ambulanceId

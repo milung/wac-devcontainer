@@ -1,11 +1,11 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PfxAmbulanceWlList } from '../pfx-ambulance-wl-list';  // 
+import { ${templateOption:PfxCamel}AmbulanceWlList } from '../pfx-ambulance-wl-list';
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { WaitingListEntry } from '../../../api/ambulance-wl';
 
-describe('pfx-ambulance-wl-list', () => {  // 
+describe('${templateOption:pfx}-ambulance-wl-list', () => {
   
   const sampleEntries: WaitingListEntry[] = [
     {
@@ -27,17 +27,16 @@ describe('pfx-ambulance-wl-list', () => {  //
     beforeAll(() => { mock = new MockAdapter(axios); });
     afterEach(() => { mock.reset(); });
 
-   it('renders sample entries', async () => {
+  it('renders sample entries', async () => {
 
     mock.onGet().reply(200, sampleEntries);
 
     const page = await newSpecPage({
-      components: [PfxAmbulanceWlList],  // 
-      html: `<pfx-ambulance-wl-list ambulance-id="test-ambulance" api-base="http://test/api"></pfx-ambulance-wl-list>`,  // 
+      components: [${templateOption:PfxCamel}AmbulanceWlList],
+      html: `<${templateOption:pfx}-ambulance-wl-list  ambulance-id="test-ambulance" api-base="http://test/api"></${templateOption:pfx}-ambulance-wl-list>`,
     });
 
-
-    const wlList = page.rootInstance as PfxAmbulanceWlList; // 
+    const wlList = page.rootInstance as ${templateOption:PfxCamel}AmbulanceWlList;
     const expectedPatients = wlList?.waitingPatients?.length
 
     const items = page.root.shadowRoot.querySelectorAll("md-list-item");
@@ -50,12 +49,12 @@ describe('pfx-ambulance-wl-list', () => {  //
     mock.onGet().networkError();
 
     const page = await newSpecPage({
-      components: [PfxAmbulanceWlList],  // 
-      html: `<pfx-ambulance-wl-list ambulance-id="test-ambulance" api-base="http://test/api"></pfx-ambulance-wl-list>`,  // 
+      components: [${templateOption:PfxCamel}AmbulanceWlList],
+      html: `<${templateOption:pfx}-ambulance-wl-list ambulance-id="test-ambulance" api-base="http://test/api"></${templateOption:pfx}-ambulance-wl-list>`,
     });
 
     
-    const wlList = page.rootInstance as PfxAmbulanceWlList; // 
+    const wlList = page.rootInstance as ${templateOption:PfxCamel}AmbulanceWlList;
     const expectedPatients = wlList?.waitingPatients?.length
 
     const errorMessage =  page.root.shadowRoot.querySelectorAll(".error");

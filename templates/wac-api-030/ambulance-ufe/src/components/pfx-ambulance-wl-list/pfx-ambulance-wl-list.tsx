@@ -3,34 +3,34 @@ import { AmbulanceWaitingListApiFactory, WaitingListEntry } from '../../api/ambu
 
 
 @Component({
-  tag: 'pfx-ambulance-wl-list', // 
-  styleUrl: 'pfx-ambulance-wl-list.css', // 
+  tag: '${templateOption:pfx}-ambulance-wl-list',
+  styleUrl: 'pfx-ambulance-wl-list.css',
   shadow: true,
 })
-export class PfxAmbulanceWlList { // 
+export class ${templateOption:PfxCamel}AmbulanceWlList {
 
-  @Event({ eventName: "entry-clicked" }) entryClicked: EventEmitter<string>
+  @Event({ eventName: "entry-clicked" }) entryClicked: EventEmitter<string>;
 
-  @Prop() apiBase: string
-  @Prop() ambulanceId: string
+  @Prop() apiBase: string;
+  @Prop() ambulanceId: string;
+  @State() errorMessage: string;
 
   waitingPatients: WaitingListEntry[];
 
-  @State() errorMessage: string
-
   private async getWaitingPatientsAsync(): Promise<WaitingListEntry[]> {
-  try {
-      const response = await AmbulanceWaitingListApiFactory(undefined, this.apiBase).getWaitingListEntries(this.ambulanceId)
-
+    try {
+      const response = await
+        AmbulanceWaitingListApiFactory(undefined, this.apiBase).
+          getWaitingListEntries(this.ambulanceId)
       if (response.status < 299) {
-        return response.data
+        return response.data;
       } else {
-        this.errorMessage = `Cannot retrieve entry: ${response.statusText}`
+          this.errorMessage = `Cannot retrieve list of waiting patients: ${response.statusText}`
       }
     } catch (err: any) {
-      this.errorMessage = `Cannot retrieve entry: ${err.message || "unknown"}`
+      this.errorMessage = `Cannot retrieve list of waiting patients: ${err.message || "unknown"}`
     }
-    return [];  
+    return [];
   } 
 
   async componentWillLoad() {
@@ -47,10 +47,10 @@ export class PfxAmbulanceWlList { //
       <Host>
         {this.errorMessage
           ? <div class="error">{this.errorMessage}</div>
-          : <md-list>   
-          {this.waitingPatients.map((entry) =>   
-            <md-list-item   
-              headline={entry.name}   
+          : <md-list>
+          {this.waitingPatients.map((entry) =>
+            <md-list-item
+              headline={entry.name}
               supportingText={"Predpokladaný vstup: " + this.isoDateToLocale(entry.estimatedStart)}   
               onClick={() => this.entryClicked.emit(entry.id)}
             >   

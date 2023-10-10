@@ -1,11 +1,11 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PfxAmbulanceWlEditor } from '../pfx-ambulance-wl-editor'; // 
+import { ${templateOption:PfxCamel}AmbulanceWlEditor } from '../pfx-ambulance-wl-editor';
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { Condition, WaitingListEntry } from '../../../api/ambulance-wl';
 
-describe('pfx-ambulance-wl-editor', () => { // 
+describe('${templateOption:pfx}-ambulance-wl-editor', () => { 
   const sampleEntry: WaitingListEntry = {
     id: "entry-1",
     patientId: "p-1",
@@ -49,8 +49,8 @@ describe('pfx-ambulance-wl-editor', () => { //
     mock.onGet(/^.*\/condition$/).reply(200, sampleConditions);
 
     const page = await newSpecPage({
-      components: [PfxAmbulanceWlEditor], // 
-      html: `<pfx-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></pfx-ambulance-wl-editor>`, // 
+      components: [${templateOption:PfxCamel}AmbulanceWlEditor],
+      html: `<${templateOption:pfx}-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></${templateOption:pfx}-ambulance-wl-editor>`, 
     });
 
     await delay(300);
@@ -71,8 +71,8 @@ describe('pfx-ambulance-wl-editor', () => { //
     mock.onGet(/^.*\/condition$/).reply(200, sampleConditions);
 
     const page = await newSpecPage({
-      components: [PfxAmbulanceWlEditor], // 
-      html: `<pfx-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></pfx-ambulance-wl-editor>`, // 
+      components: [${templateOption:PfxCamel}AmbulanceWlEditor],
+      html: `<${templateOption:pfx}-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></${templateOption:pfx}-ambulance-wl-editor>`, 
     });
     await delay(300);
     await page.waitForChanges();

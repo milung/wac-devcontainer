@@ -3,8 +3,8 @@ package ambulance_wl
 import (
 	"net/http"
 
+	"github.com/${templateOption:githubAccount}/ambulance-webapi/internal/db_service"
 	"github.com/gin-gonic/gin"
-	"github.com/milung/ambulance-webapi/internal/db_service"
 )
 
 type ambulanceUpdater = func(

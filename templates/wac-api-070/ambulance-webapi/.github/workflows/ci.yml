@@ -21,7 +21,7 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: '1.21'
+        go-version: '${templateOption:goVersion}'
 
     - name: Generate api controllers interfaces
       uses: craicoverflow/openapi-generator-generate-action@v1.2.1
@@ -48,7 +48,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4.6.0
       with:
-        images: milung/ambulance-wl-webapi
+        images: ${templateOption:dockerhubAccount}/ambulance-wl-webapi
         tags: |
             type=schedule
             type=ref,event=branch

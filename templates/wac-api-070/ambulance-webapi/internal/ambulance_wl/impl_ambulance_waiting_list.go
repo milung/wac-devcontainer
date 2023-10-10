@@ -99,15 +99,92 @@ func (this *implAmbulanceWaitingListAPI) DeleteWaitingListEntry(ctx *gin.Context
 
 // GetWaitingListEntries - Provides the ambulance waiting list
 func (this *implAmbulanceWaitingListAPI) GetWaitingListEntries(ctx *gin.Context) {
-	ctx.AbortWithStatus(http.StatusNotImplemented)
+	// update ambulance document
+	updateAmbulanceFunc(ctx, func(c *gin.Context, ambulance *Ambulance) (*Ambulance, interface{}, int) {
+		// return nil ambulance - no need to update it in db
+		return nil, ambulance.WaitingList, http.StatusOK
+	})
 }
 
 // GetWaitingListEntry - Provides details about waiting list entry
 func (this *implAmbulanceWaitingListAPI) GetWaitingListEntry(ctx *gin.Context) {
-	ctx.AbortWithStatus(http.StatusNotImplemented)
+	// update ambulance document
+	updateAmbulanceFunc(ctx, func(c *gin.Context, ambulance *Ambulance) (*Ambulance, interface{}, int) {
+		entryId := ctx.Param("entryId")
+
+		if entryId == "" {
+			return nil, gin.H{
+				"status":  http.StatusBadRequest,
+				"message": "Entry ID is required",
+			}, http.StatusBadRequest
+		}
+
+		entryIndx := slices.IndexFunc(ambulance.WaitingList, func(waiting WaitingListEntry) bool {
+			return entryId == waiting.Id
+		})
+
+		if entryIndx < 0 {
+			return nil, gin.H{
+				"status":  http.StatusNotFound,
+				"message": "Entry not found",
+			}, http.StatusNotFound
+		}
+		// return nil ambulance - no need to update it in db
+		return nil, ambulance.WaitingList[entryIndx], http.StatusOK
+	})
 }
 
 // UpdateWaitingListEntry - Updates specific entry
 func (this *implAmbulanceWaitingListAPI) UpdateWaitingListEntry(ctx *gin.Context) {
-	ctx.AbortWithStatus(http.StatusNotImplemented)
+	// update ambulance document
+	updateAmbulanceFunc(ctx, func(c *gin.Context, ambulance *Ambulance) (*Ambulance, interface{}, int) {
+		var entry WaitingListEntry
+
+		if err := c.ShouldBindJSON(&entry); err != nil {
+			return nil, gin.H{
+				"status":  http.StatusBadRequest,
+				"message": "Invalid request body",
+				"error":   err.Error(),
+			}, http.StatusBadRequest
+		}
+
+		entryId := ctx.Param("entryId")
+
+		if entryId == "" {
+			return nil, gin.H{
+				"status":  http.StatusBadRequest,
+				"message": "Entry ID is required",
+			}, http.StatusBadRequest
+		}
+
+		entryIndx := slices.IndexFunc(ambulance.WaitingList, func(waiting WaitingListEntry) bool {
+			return entryId == waiting.Id
+		})
+
+		if entryIndx < 0 {
+			return nil, gin.H{
+				"status":  http.StatusNotFound,
+				"message": "Entry not found",
+			}, http.StatusNotFound
+		}
+
+		if entry.PatientId != "" {
+			ambulance.WaitingList[entryIndx].PatientId = entry.PatientId
+		}
+
+		if entry.Id != "" {
+			ambulance.WaitingList[entryIndx].Id = entry.Id
+		}
+
+		if entry.WaitingSince.After(time.Time{}) {
+			ambulance.WaitingList[entryIndx].WaitingSince = entry.WaitingSince
+		}
+
+		if entry.EstimatedDurationMinutes > 0 {
+			ambulance.WaitingList[entryIndx].EstimatedDurationMinutes = entry.EstimatedDurationMinutes
+		}
+
+		ambulance.reconcileWaitingList()
+		return ambulance, ambulance.WaitingList[entryIndx], http.StatusOK
+	})
 }

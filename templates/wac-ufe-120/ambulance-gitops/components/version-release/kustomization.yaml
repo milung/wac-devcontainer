@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 images:
-- name: ${templateOption:pfx}/ambulance-ufe
-  newName: ${templateOption:pfx}/ambulance-ufe 
+- name: ${templateOption:dockerhubAccount}/ambulance-ufe
+  newName: ${templateOption:dockerhubAccount}/ambulance-ufe 
   newTag: 1.0.0
 
 replacements: 
@@ -17,8 +17,7 @@ replacements:
     source: 
       version: v1
       kind: Deployment
-      name:  ${templateOption:pfx}-ambulance-ufe-deployment  
-      namespace: wac-hospital
+      name:  ${templateOption:pfx}-ambulance-ufe-deployment
       fieldPath: spec.template.spec.containers.0.image
       options: 
         delimiter: ':'

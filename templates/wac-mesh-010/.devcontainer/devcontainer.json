@@ -4,15 +4,10 @@
 	"name": "wac-tutorial (uFe.009)",
 	"image": "milung/wac-devcontainer",
 	"features": {},
-	"initializeCommand": {
-		"pull-latest": "docker pull milung/wac-devcontainer",
-		"copy localkubeconfig": "mkdir -p ${localWorkspaceFolder}/.kube && cp /~/.kube/config ${localWorkspaceFolder}/.kube/config"
-
-	},
-
+	"initializeCommand": [ ".devcontainer/init" ],
+	"postAttachCommand": "mkdir -p ~/.kube && cp ${containerWorkspaceFolder}/.kube/config  ~/.kube/config ",
 	// must chovn attached volumes to node user
-	"postCreateCommand": "sudo chown node ambulance-ufe/node_modules ambulance-ufe/www ambulance-ufe/dist ambulance-ufe/.stencil",
-	"postAttachCommand": "mkdir -p ${containerWorkspaceFolder}/.kube && cp ${containerWorkspaceFolder}/.kube/config /~/.kube/config ",
+	"postCreateCommand": "sudo chown node ambulance-ufe/node_modules ambulance-ufe/www ambulance-ufe/dist ambulance-ufe/.stencil; export PATH=${PATH}:/usr/local/go/bin",
 	// Mounting intermediate files (node_modules, www, ... ) as volumes is recommended 
 	// when using Docker Desktop for Mac or Windows - speeds up compilation and installs.
 	"mounts": [
@@ -20,5 +15,27 @@
 		"source=${localWorkspaceFolderBasename}-dist,target=${containerWorkspaceFolder}/ambulance-ufe/dist,type=volume",
 		"source=${localWorkspaceFolderBasename}-www,target=${containerWorkspaceFolder}/ambulance-ufe/www,type=volume",
 		"source=${localWorkspaceFolderBasename}-stencil,target=${containerWorkspaceFolder}/ambulance-ufe/.stencil,type=volume"
-	]
+	],
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:/usr/local/go/bin"
+	},
+	"forwardPorts": [
+		3333, 5000, 8080
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"github.vscode-github-actions",
+				"mermade.openapi-lint",
+				"philosowaffle.openapi-designer",
+				"natemoo-re.vscode-stencil-tools",
+				"golang.go"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "pwsh"
+			}
+		}
+	}
 }
+

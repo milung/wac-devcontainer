@@ -3,11 +3,11 @@ import { AmbulanceConditionsApiFactory, AmbulanceWaitingListApiFactory, Conditio
 
 
 @Component({
-  tag: 'pfx-ambulance-wl-editor', // 
-  styleUrl: 'pfx-ambulance-wl-editor.css', // 
+  tag: '${templateOption:pfx}-ambulance-wl-editor',
+  styleUrl: 'pfx-ambulance-wl-editor.css',
   shadow: true,
 })
-export class PfxAmbulanceWlEditor {  // 
+export class ${templateOption:PfxCamel}AmbulanceWlEditor { 
 
   @Prop() entryId: string;
 @Prop() ambulanceId: string;

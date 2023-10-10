@@ -3,9 +3,9 @@ package ambulance_wl
 import (
 	"net/http"
 
+	"github.com/${templateOption:githubAccount}/ambulance-webapi/internal/db_service"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/milung/ambulance-webapi/internal/db_service"
 )
 
 // CreateAmbulance - Saves new ambulance definition

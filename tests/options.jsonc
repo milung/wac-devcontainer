@@ -26,7 +26,14 @@
     "typesJestVersion": "27.5.2",
     "typesNodeVersion": "16.18.11",
 
+    // go packages versions
+    "goVersion": "1.21",
+    "ginGonicVersion": "v1.9.1",
+	"googleUuidVersion": "v1.3.0",
+	"mongoDriverVersion": "v1.12.1",
+
     // docker images
     "ciNodeVersion": "20.x",
     "nodeImageTag": "latest",
+    "openApiCliImgVersion": "v7.0.1"
 }

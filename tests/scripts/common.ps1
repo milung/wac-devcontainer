@@ -89,6 +89,42 @@ function test_ufe_build($WithTest=$true) {
     }
 }
 
+function test_webapi_build($WithTest=$true) {
+    $location = Get-Location
+    Set-Location -Path $TestOutput/ambulance-webapi
+
+    msg "Running webapi go mod tidy ..."
+    try {
+        go mod tidy
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "${TemplateName}: go mod tidy failed"
+            throw "go mod tidy failed"
+        }
+        
+        msg  "Running ambulance-webapi build ..."
+        go build ./cmd/ambulance-api-service
+
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "${TemplateName}: ambulance-webapi build failed"
+            throw "ambulance-webapi build failed"
+        }
+
+        if ($WithTest) {
+            msg "Running ambulance-webapi tests ..."
+            go test ./...
+
+            if ($LASTEXITCODE -ne 0) {
+                Write-Error "${TemplateName}: ambulance-webapi tests failed"
+                throw "ambulance-webapi tests failed"
+            }
+        }
+    }
+    finally {
+        Set-Location -Path $location
+    }
+}
+
+
 function docker_build_ufe {
     $location = Get-Location
     Set-Location -Path $TestOutput/ambulance-ufe
@@ -115,8 +151,25 @@ function openapi_ufe_client {
     try {
         npm run openapi
         if ($LASTEXITCODE -ne 0) {
-            Write-Error "${TemplateName}: docker build failed"
-            throw "docker build failed"
+            Write-Error "${TemplateName}: openapi client generation failed"
+            throw "openapi client generation failed"
+        }
+    }
+    finally {
+        Set-Location -Path $location
+    }
+}
+
+function openapi_webapi_stub {
+    $location = Get-Location
+    Set-Location -Path $TestOutput/ambulance-webapi
+
+    msg "Generating webapi stub from openapi ..."
+    try {
+        ./scripts/run.ps1 openapi
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "${TemplateName}: openapi stub generation failed"
+            throw "openapi stub generation failed"
         }
     }
     finally {

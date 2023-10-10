@@ -1,10 +1,13 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-	"name": "wac-tutorial (uFe.002)",
+	"name": "wac-tutorial (uFe.009)",
 	"image": "milung/wac-devcontainer",
 	"features": {},
-	"initializeCommand": "docker pull milung/wac-devcontainer",
+	"initializeCommand": [ ".devcontainer/init" ],
+	"postAttachCommand": "mkdir -p ~/.kube && cp ${containerWorkspaceFolder}/.kube/config  ~/.kube/config ",
+	// must chovn attached volumes to node user
+	"postCreateCommand": "sudo chown node ambulance-ufe/node_modules ambulance-ufe/www ambulance-ufe/dist ambulance-ufe/.stencil; export PATH=${PATH}:/usr/local/go/bin",
 	// Mounting intermediate files (node_modules, www, ... ) as volumes is recommended 
 	// when using Docker Desktop for Mac or Windows - speeds up compilation and installs.
 	"mounts": [
@@ -13,6 +16,26 @@
 		"source=${localWorkspaceFolderBasename}-www,target=${containerWorkspaceFolder}/ambulance-ufe/www,type=volume",
 		"source=${localWorkspaceFolderBasename}-stencil,target=${containerWorkspaceFolder}/ambulance-ufe/.stencil,type=volume"
 	],
-	// must chovn attached volumes to node user
-	"postCreateCommand": "sudo chown node ambulance-ufe/node_modules ambulance-ufe/www ambulance-ufe/dist ambulance-ufe/.stencil"
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:/usr/local/go/bin"
+	},
+	"forwardPorts": [
+		3333, 5000, 8080
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"github.vscode-github-actions",
+				"mermade.openapi-lint",
+				"philosowaffle.openapi-designer",
+				"natemoo-re.vscode-stencil-tools",
+				"golang.go"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "pwsh"
+			}
+		}
+	}
 }
+

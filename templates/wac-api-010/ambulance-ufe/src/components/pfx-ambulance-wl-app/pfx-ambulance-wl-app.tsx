@@ -5,11 +5,11 @@ declare global {
 }
 
 @Component({
-  tag: 'pfx-ambulance-wl-app', // 
-  styleUrl: 'pfx-ambulance-wl-app.css', // 
+  tag: '${templateOption:pfx}-ambulance-wl-app',
+  styleUrl: 'pfx-ambulance-wl-app.css',
   shadow: true,
 })
-export class PfxAmbulanceWlApp { // 
+export class ${templateOption:PfxCamel}AmbulanceWlApp {
 
   @State() private relativePath = "";
 
@@ -57,13 +57,14 @@ export class PfxAmbulanceWlApp { //
     return (
       <Host>
         { element === "editor" 
-        ? <pfx-ambulance-wl-editor entry-id={entryId} // 
+        ? <${templateOption:pfx}-ambulance-wl-editor entry-id={entryId}
           ambulance-id={this.ambulanceId} api-base={this.apiBase}
           oneditor-closed={ () => navigate("./list")}
-        ></pfx-ambulance-wl-editor> // 
-        : <pfx-ambulance-wl-list  ambulance-id={this.ambulanceId} api-base={this.apiBase} // 
+        ></${templateOption:pfx}-ambulance-wl-editor>
+        : <${templateOption:pfx}-ambulance-wl-list
+            ambulance-id={this.ambulanceId} api-base={this.apiBase}
             onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
-          </pfx-ambulance-wl-list>  // 
+          </${templateOption:pfx}-ambulance-wl-list>
         }
         
       </Host>

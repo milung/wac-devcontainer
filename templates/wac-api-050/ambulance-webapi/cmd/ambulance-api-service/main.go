@@ -6,10 +6,10 @@ import (
 	"os"
 	"strings"
 
+	"github.com/${templateOption:githubAccount}/ambulance-webapi/api"
+	"github.com/${templateOption:githubAccount}/ambulance-webapi/internal/ambulance_wl"
+	"github.com/${templateOption:githubAccount}/ambulance-webapi/internal/db_service"
 	"github.com/gin-gonic/gin"
-	"github.com/milung/ambulance-webapi/internal/ambulance_wl"
-	"github.com/milung/ambulance-webapi/internal/db_service"
-	"github.com/pfx/ambulance-webapi/api"
 )
 
 func main() {

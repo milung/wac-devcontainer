@@ -26,30 +26,30 @@
     "start:mock": "run-s convert-openapi mock-api",
     "start": "run-p start:mock start:app",
     "build": "stencil build --docs",
-    "test": "stencil test --spec --e2e",
+    "test": "stencil test --spec --e2e --port 3535",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "openapi": "openapi-generator-cli generate"
   },
   "dependencies": {
-    "@material/web": "^1.0.0-pre.14",
-    "@stencil/core": "^4.0.0",
-    "axios": "^1.4.0"
+    "@material/web": "^${templateOption:materialWebVersion}",
+    "@stencil/core": "^${templateOption:stencilCoreVersion}",
+    "axios": "^${templateOption:axiosVersion}"
   },
   "devDependencies": {
-"@babel/preset-env": "^7.22.9",
-    "@openapitools/openapi-generator-cli": "^2.7.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
-    "axios-mock-adapter": "^1.21.5",
-    "babel-jest": "^27.5.1",
-    "jest": "^27.5.1",
-    "jest-cli": "^27.5.1",
-    "js-yaml": "^4.1.0",
-    "npm-run-all": "^4.1.5",
-    "open-api-mocker": "^2.0.0",
-    "ts-jest": "^27.1.4",
-    "puppeteer": "^20.7.4"
+    "@babel/preset-env": "^${templateOption:babelPresetEnvVersion}",
+    "@openapitools/openapi-generator-cli": "^${templateOption:openApiGeneratorCliVersion}",
+    "@types/jest": "^${templateOption:typesJestVersion}",
+    "@types/node": "^${templateOption:typesNodeVersion}",
+    "axios-mock-adapter":  "^${templateOption:axiosMockAdapterVersion}",
+    "babel-jest": "^${templateOption:babelJestVersion}",
+    "jest": "^${templateOption:jestVersion}",
+    "jest-cli": "^${templateOption:jestcliVersion}",
+    "js-yaml": "^${templateOption:jsYamlVersion}",
+    "npm-run-all": "^${templateOption:npmRunAllVersion}",
+    "open-api-mocker": "^${templateOption:openApiMockerVersion}",
+    "ts-jest": "^${templateOption:tsJestVersion}",
+    "puppeteer": "^${templateOption:puppeteerVersion}"
   },
   "license": "MIT"
 }

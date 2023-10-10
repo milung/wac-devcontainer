@@ -6,7 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/<pfx>/ambulance-webapi/api" //
+	"github.com/${templateOption:githubAccount}/ambulance-webapi/api"
+	"github.com/${templateOption:githubAccount}/ambulance-webapi/internal/ambulance_wl"
 	"github.com/gin-gonic/gin"
 )
 
