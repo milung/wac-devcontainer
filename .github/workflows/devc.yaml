@@ -72,7 +72,7 @@ jobs:
 
     - name: Test all templates 
       shell: pwsh
-      run: ./scripts/run.ps1 test
+      run: $env:KeepTestOutput=$true && ./scripts/run.ps1 test
 
     - name: Publish Templates
       continue-on-error: true
