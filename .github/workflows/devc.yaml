@@ -17,7 +17,7 @@ env:
 jobs:
   find-tests:
     name: Find Test
-    runs-on: linux
+    runs-on: ubuntu-latest
     container: debian:buster-slim
     outputs:
       folders: ${{ steps.jobs.outputs.folders }}
