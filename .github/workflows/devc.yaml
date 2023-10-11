@@ -50,6 +50,10 @@ jobs:
         with:
           go-version: '^1.21.0' 
 
+      - name: Unify chapter templates
+        shell: pwsh
+        run: ./scripts/run.ps1 unify-templates
+
       - name: Test template ${{ matrix.folder }} 
         shell: pwsh
         run: ./scripts/run.ps1 test ${{ matrix.folder }}
