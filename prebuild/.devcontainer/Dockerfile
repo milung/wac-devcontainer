@@ -6,4 +6,3 @@ RUN sudo apt-get update && \
         libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
         libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2
 
-COPY .devc-tools/ /.devc-tools/
