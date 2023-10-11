@@ -18,16 +18,15 @@ jobs:
   find-tests:
     name: Find Test
     runs-on: ubuntu-latest
-    container: debian:buster-slim
     outputs:
-      folders: ${{ steps.jobs.outputs.folders }}
+      folders: ${{ steps.tests.outputs.folders }}
     steps:
       - uses: actions/checkout@v1
 
-      - id: tests
-        uses: philips-labs/list-folder-action@v1
-        with:
-          path: ./tests
+      - name: List tests 
+        shell: pwsh
+        run: |
+          'folders=' + (Get-ChildItem -Path ./tests -Filter test.ps1 -Recurse | foreach-object { $_.Directory.Name } | ConvertTo-Json -Compress) >> $GITHUB_OUTPUT
 
   test-templates:
     name: Test Template
