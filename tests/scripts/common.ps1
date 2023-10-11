@@ -50,6 +50,7 @@ function clean_template_output {
     else {
         if ($IsLinux) {
             sudo chown -R ${USER}:${USER} $TestOutput
+            sudo chmod -R 777 $TestOutput
         }
         if (Test-Path -Path $TestOutput ) {
             Remove-Item -Recurse -Force $TestOutput
