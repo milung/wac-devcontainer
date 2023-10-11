@@ -1,7 +1,7 @@
 {
     // prefixes
-    "pfx": "test",
-    "PfxCamel": "Test",
+    "pfx": "milung",
+    "PfxCamel": "Milung",
 
     // accounts
     "dockerhubAccount": "milung",

@@ -13,7 +13,7 @@ resources:
 
 components: 
 - ../../../components/version-developers
--  https://github.com/${templateOption:githubAccount}/ambulance-webapi//deploy/manifests/components/mongodb
+-  https://github.com/${templateOption:githubAccount}/ambulance-webapi//deployments/kustomize/components/mongodb
 
 patches:
   - path: patches/ambulance-webapi.service.yaml

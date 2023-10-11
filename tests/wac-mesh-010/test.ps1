@@ -17,7 +17,7 @@ try {
     
     try_cluster localhost
     try_cluster wac-aks
-    
+
 }
 finally {
    clean_template_output
