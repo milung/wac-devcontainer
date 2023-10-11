@@ -26,7 +26,7 @@ jobs:
       - name: List tests 
         shell: pwsh
         run: |
-          'folders=' + (Get-ChildItem -Path ./tests -Filter test.ps1 -Recurse | foreach-object { $_.Directory.Name } | ConvertTo-Json -Compress) >> $GITHUB_OUTPUT
+          'folders=' + (Get-ChildItem -Path ./tests -Filter test.ps1 -Recurse | foreach-object { $_.Directory.Name } | ConvertTo-Json -Compress) >> ${env:GITHUB_OUTPUT}
 
   test-templates:
     name: Test Template
