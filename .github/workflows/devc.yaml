@@ -19,11 +19,12 @@ jobs:
     name: Find Test
     runs-on: ubuntu-latest
     outputs:
-      folders: ${{ steps.tests.outputs.folders }}
+      folders: ${{ steps.list-tests.outputs.folders }}
     steps:
       - uses: actions/checkout@v1
 
       - name: List tests 
+        id: list-tests
         shell: pwsh
         run: |
           'folders=' + (Get-ChildItem -Path ./tests -Filter test.ps1 -Recurse | foreach-object { $_.Directory.Name } | ConvertTo-Json -Compress) >> ${env:GITHUB_OUTPUT}
