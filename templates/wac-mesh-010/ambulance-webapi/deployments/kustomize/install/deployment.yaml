@@ -75,7 +75,7 @@ spec:
             - name: AMBULANCE_API_MONGODB_COLLECTION
               value: ambulances
             - name: AMBULANCE_API_MONGODB_TIMEOUT_SECONDS
-              value: 5
+              value: "5"
           resources:
             requests:
               memory: "64Mi"
@@ -91,7 +91,7 @@ spec:
               containerPort: 8081
           env:
             - name: PORT
-              value: 8081
+              value: "8081"
             - name: URL
               value: http://localhost:8080/.openapi/
             - name: BASE_URL

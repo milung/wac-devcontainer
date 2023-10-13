@@ -18,5 +18,9 @@ secretGenerator:
     - username=admin
     - password=admin
 
-patches:
-- path: patches/webapi.deployment.yaml
+- path: patches/webapi.deployment.patch.yaml
+  target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: ${templateOption:pfx}-ambulance-webapi
