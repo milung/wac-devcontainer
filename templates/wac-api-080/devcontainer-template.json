@@ -1,8 +1,8 @@
 {
-  "id": "wac-api-070",
-  "name": "WAC api (Step 070)",
-  "description": "WAC API: Inštalácia a nastavenie MongoDB databázy",
-  "documentationURL": "http://localhost:3380/dojo/02.WebApi-Go/070-deployment",
+  "id": "wac-api-080",
+  "name": "WAC api (Step 080)",
+  "description": "WAC API: Nasadenie Web API na Lokálny klaster",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/02.WebApi-Go/080-deployment",
   "platforms": [
     "Any"
   ],

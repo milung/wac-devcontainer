@@ -1,8 +1,8 @@
 {
   "id": "wac-api-050",
   "name": "WAC api (Step 050)",
-  "description": "WAC API: Inštalácia a nastavenie MongoDB databázy",
-  "documentationURL": "http://localhost:3380/dojo/02.WebApi-Go/050-test-in-go",
+  "description": "WAC API: Testovanie v jazyku Go",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/02.WebApi-Go/050-test-in-go",
   "platforms": [
     "Any"
   ],

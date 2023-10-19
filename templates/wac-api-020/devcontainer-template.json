@@ -2,7 +2,7 @@
   "id": "wac-api-020",
   "name": "WAC api (Step 020)",
   "description": "WAC API: Vygenerovanie kostry obslužného kódu API",
-  "documentationURL": "http://localhost:3380/dojo/02.WebApi-Go/020-webapi",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/02.WebApi-Go/020-webapi",
   "platforms": [
     "Any"
   ],

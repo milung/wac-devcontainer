@@ -2,7 +2,7 @@
   "id": "wac-ufe-090",
   "name": "WAC uFe (Step 090)",
   "description": "WAC FE: Editor položiek a navigácia",
-  "documentationURL": "http://localhost:3380/dojo/01.Web-Components/090-entry-editor-and-routing",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/01.Web-Components/090-entry-editor-and-routing",
   "platforms": [
     "Any"
   ],

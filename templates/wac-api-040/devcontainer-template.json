@@ -1,8 +1,8 @@
 {
   "id": "wac-api-040",
   "name": "WAC api (Step 040)",
-  "description": "WAC API: Implementácia perzistencie údajov vo WEB API",
-  "documentationURL": "http://localhost:3380/dojo/02.WebApi-Go/040-api-persistence",
+  "description": "WAC API: Implementácia WEB API a perzistencie údajov",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/02.WebApi-Go/040-api-persistence",
   "platforms": [
     "Any"
   ],

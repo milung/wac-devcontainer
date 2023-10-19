@@ -1,8 +1,8 @@
 {
-  "id": "wac-api-070",
-  "name": "WAC api (Step 070)",
+  "id": "wac-mesh-010",
+  "name": "WAC Mesh (Step 010)",
   "description": "Service Mesh - Deployment",
-  "documentationURL": "http://localhost:3380/dojo/02.WebApi-Go/070-deployment",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/03.ServiceMesh/010-gateway",
   "platforms": [
     "Any"
   ],

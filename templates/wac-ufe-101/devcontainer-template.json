@@ -2,7 +2,7 @@
   "id": "wac-ufe-101",
   "name": "WAC uFe (Step 101)",
   "description": "WAC FE: Návrh API špecifikácie",
-  "documentationURL": "http://localhost:3380/dojo/01.Web-Components/101-openapi",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/01.Web-Components/101-openapi",
   "platforms": [
     "Any"
   ],

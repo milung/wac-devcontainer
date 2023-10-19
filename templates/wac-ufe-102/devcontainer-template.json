@@ -2,7 +2,7 @@
   "id": "wac-ufe-102",
   "name": "WAC uFe (Step 102)",
   "description": "WAC FE:API pre úpravu záznamov",
-  "documentationURL": "http://localhost:3380/dojo/01.Web-Components/102-crud-api",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/01.Web-Components/102-crud-api",
   "platforms": [
     "Any"
   ],

@@ -1,8 +1,8 @@
 {
   "id": "wac-api-060",
-  "name": "WAC api (Step 050)",
-  "description": "WAC API: Inštalácia a nastavenie MongoDB databázy",
-  "documentationURL": "http://localhost:3380/dojo/02.WebApi-Go/060-dockerization",
+  "name": "WAC api (Step 060)",
+  "description": "WAC API: Kontajnerizovanie aplikácie a priebežná integrácia",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/02.WebApi-Go/060-dockerization",
   "platforms": [
     "Any"
   ],
