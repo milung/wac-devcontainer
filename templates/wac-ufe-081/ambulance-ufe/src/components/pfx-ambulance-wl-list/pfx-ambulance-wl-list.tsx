@@ -49,14 +49,13 @@ export class ${templateOption:PfxCamel}AmbulanceWlList {
     return (
       <Host>
         <md-list>   
-          {this.waitingPatients.map(entry =>   
-            <md-list-item   
-              headline={entry.name}   
-              supportingText={"Predpokladaný vstup: " + this.isoDateToLocale(entry.estimatedStart)}   
-            >   
-              <md-icon slot="start">person</md-icon>   
-            </md-list-item>   
-          )}   
+          {this.waitingPatients.map(patient => 
+            <md-list-item>
+              <div slot="headline">{patient.name}</div>
+              <div slot="supporting-text">{"Predpokladaný vstup: " + this.isoDateToLocale(patient.estimatedStart)}</div>
+                <md-icon slot="start">person</md-icon>
+            </md-list-item>
+          )}
         </md-list>   
       </Host>
     );

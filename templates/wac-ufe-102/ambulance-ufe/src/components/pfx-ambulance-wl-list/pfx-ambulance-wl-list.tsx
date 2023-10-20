@@ -47,13 +47,11 @@ export class ${templateOption:PfxCamel}AmbulanceWlList {
         {this.errorMessage
           ? <div class="error">{this.errorMessage}</div>
           : <md-list>
-            {this.waitingPatients.map((entry, index) =>
-              <md-list-item
-                headline={entry.name}
-                supportingText={"Predpokladaný vstup: " + this.isoDateToLocale(entry.estimatedStart)}
-                onClick={() => this.entryClicked.emit(index.toString())}
-              >
-                <md-icon slot="start">person</md-icon>
+            {this.waitingPatients.map((patient, index) => 
+              <md-list-item onClick={() => this.entryClicked.emit(index.toString())}>
+                <div slot="headline">{patient.name}</div>
+                <div slot="supporting-text">{"Predpokladaný vstup: " + this.isoDateToLocale(patient.estimatedStart)}</div>
+                  <md-icon slot="start">person</md-icon>
               </md-list-item>
             )}
           </md-list>
