@@ -6,3 +6,5 @@ resources:
 - openapi.service.yaml
 - http-route.yaml
 
+patches:
+- path: patches/ambulance-webapi.deployment.yaml

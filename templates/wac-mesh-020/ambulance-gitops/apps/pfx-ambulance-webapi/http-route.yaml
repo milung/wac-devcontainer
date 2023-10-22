@@ -9,7 +9,13 @@ spec:
     - matches:
         - path:
             type: PathPrefix
-            value: /api
+            value: /${templateOption:pfx}-api
+      filters: 
+      - type: URLRewrite
+        urlRewrite:
+          path:
+            type: ReplacePrefixMatch
+            replacePrefixMatch: /api
       backendRefs:
         - group: ""
           kind: Service
@@ -18,9 +24,24 @@ spec:
     - matches:
         - path:
             type: PathPrefix
-            value: /openapi
+            value: /${templateOption:pfx}-openapi-ui
       backendRefs:
         - group: ""
           kind: Service
-          name: ${templateOption:pfx}-openapi
+          name: ${templateOption:pfx}-openapi-ui
+          port: 80
+    - matches:
+        - path:
+            type: Exact
+            value: /${templateOption:pfx}-openapi
+      filters: 
+      - type: URLRewrite
+        urlRewrite:
+          path:
+            type: ReplaceFullPath
+            replaceFullPath: /openapi
+      backendRefs:
+        - group: ""
+          kind: Service
+          name: ${templateOption:pfx}-ambulance-webapi
           port: 80
