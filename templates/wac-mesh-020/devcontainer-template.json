@@ -1,8 +1,8 @@
 {
   "id": "wac-mesh-020",
-  "name": "WAC api (Step 070)",
-  "description": "Service Mesh - Deployment",
-  "documentationURL": "https://wac-fiit.milung.eu/dojo/03.ServiceMesh/000-README",
+  "name": "WAC Mesh (Step 020)",
+  "description": "Service Mesh - Nasadenie Web Api na produkčný kubernetes klaster",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/03.ServiceMesh/020-webapi-prod-cluster",
   "platforms": [
     "Any"
   ],
