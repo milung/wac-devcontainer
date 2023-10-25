@@ -1,8 +1,8 @@
 {
-  "id": "wac-mesh-020",
-  "name": "WAC Mesh (Step 020)",
-  "description": "Service Mesh - Nasadenie Mongo Express",
-  "documentationURL": "https://wac-fiit.milung.eu/dojo/03.ServiceMesh/020-mongo-express",
+  "id": "wac-mesh-040",
+  "name": "WAC Mesh (Step 040)",
+  "description": "Service Mesh - Bezpečné pripojenie k aplikácii",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/03.ServiceMesh/040-secure-connection",
   "platforms": [
     "Any"
   ],

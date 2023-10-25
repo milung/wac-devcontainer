@@ -1,5 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { ${templateOption:PfxCamel}AmbulanceWlList } from '../pfx-ambulance-wl-list';  
+import { h } from '@stencil/core';
 
 describe('${templateOption:pfx}-ambulance-wl-list', () => {  
   it('renders', async () => {

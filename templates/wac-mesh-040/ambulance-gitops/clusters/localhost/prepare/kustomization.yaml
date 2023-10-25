@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+   
+resources:
+- namespace.yaml                            # namespace je tiež zdrojom 
+- ../../../infrastructure/ufe-controller       # kustomization pre ufe-controller
+- ../../../infrastructure/fluxcd
+- ../../../infrastructure/envoy-gateway
+  
+patches: 
+- path: patches/ufe-controller.service.yaml    # úprava služby ufe-controller
