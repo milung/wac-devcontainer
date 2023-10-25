@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component 
 
 images:
-- name: ${templateOption:dockerhubAccount}/ambulance-webapi
-  newName: ${templateOption:dockerhubAccount}/ambulance-webapi # {"$imagepolicy":  "wac-hospital:ambulance-webapi:name"}
+- name: ${templateOption:dockerhubAccount}/ambulance-wl-webapi
+  newName: ${templateOption:dockerhubAccount}/ambulance-wl-webapi # {"$imagepolicy":  "wac-hospital:ambulance-webapi:name"}
   newTag: main # {"$imagepolicy": "wac-hospital:ambulance-webapi:tag"}
 - name: ${templateOption:dockerhubAccount}/ambulance-ufe
   newName: ${templateOption:dockerhubAccount}/ambulance-ufe # {"$imagepolicy":  "wac-hospital:ambulance-ufe:name"}

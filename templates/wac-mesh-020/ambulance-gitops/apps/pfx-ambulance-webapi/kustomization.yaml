@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
 - 'https://github.com/${templateOption:githubAccount}/ambulance-webapi//deployments/kustomize/install' # ?ref=v1.0.1
-- openapi.service.yaml
+- openapi-ui.service.yaml
 - http-route.yaml
 
 patches:

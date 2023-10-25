@@ -15,6 +15,7 @@ $env:AMBULANCE_API_MONGODB_PASSWORD="neUhaDnes"
 $ProjectRoot = "${PSScriptRoot}/.."
 
 function mongo {
+    
     docker compose --file ${ProjectRoot}/deployments/docker-compose/compose.yaml $args
 }
 
@@ -29,12 +30,15 @@ switch ($command) {
         } finally {
             mongo down
         }
-    }    
+    }
     "test" {
         go test -v ./...
     }
     "mongo" {
        mongo up
+    }
+    "docker" {
+        docker build -t pfx/ambulance-wl-webapi -f ${ProjectRoot}/build/docker/Dockerfile . 
     }
     default {
         throw "Unknown command: $command"

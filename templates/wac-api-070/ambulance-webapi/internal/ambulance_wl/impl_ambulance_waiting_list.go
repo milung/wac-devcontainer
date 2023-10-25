@@ -101,8 +101,11 @@ func (this *implAmbulanceWaitingListAPI) DeleteWaitingListEntry(ctx *gin.Context
 func (this *implAmbulanceWaitingListAPI) GetWaitingListEntries(ctx *gin.Context) {
 	// update ambulance document
 	updateAmbulanceFunc(ctx, func(c *gin.Context, ambulance *Ambulance) (*Ambulance, interface{}, int) {
-		// return nil ambulance - no need to update it in db
-		return nil, ambulance.WaitingList, http.StatusOK
+		result := ambulance.WaitingList
+		if result == nil {
+			result = []WaitingListEntry{}
+		}
+		return nil, result, http.StatusOK
 	})
 }
 

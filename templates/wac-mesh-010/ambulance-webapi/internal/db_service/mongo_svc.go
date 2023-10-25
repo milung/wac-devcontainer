@@ -15,15 +15,16 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type DbService interface {
-	CreateDocument(ctx context.Context, id string, document interface{}) error
-	FindDocument(ctx context.Context, id string) (interface{}, error)
-	UpdateDocument(ctx context.Context, id string, document interface{}) error
+type DbService[DocType interface{}] interface {
+	CreateDocument(ctx context.Context, id string, document *DocType) error
+	FindDocument(ctx context.Context, id string) (*DocType, error)
+	UpdateDocument(ctx context.Context, id string, document *DocType) error
 	DeleteDocument(ctx context.Context, id string) error
+	Disconnect(ctx context.Context) error
 }
 
-var NotFoundError = fmt.Errorf("Document not found!")
-var ConflictError = fmt.Errorf("Conflict: Document already exists!")
+var ErrNotFound = fmt.Errorf("document not found")
+var ErrConflict = fmt.Errorf("conflict: document already exists")
 
 type MongoServiceConfig struct {
 	ServerHost string
@@ -35,15 +36,15 @@ type MongoServiceConfig struct {
 	Timeout    time.Duration
 }
 
-type mongoSvc struct {
+type mongoSvc[DocType interface{}] struct {
 	MongoServiceConfig
 	client     atomic.Pointer[mongo.Client]
 	clientLock sync.Mutex
 }
 
-func NewMongoService(
+func NewMongoService[DocType interface{}](
 	config MongoServiceConfig,
-) DbService {
+) DbService[DocType] {
 	enviro := func(name string, defaultValue string) string {
 		if value, ok := os.LookupEnv(name); ok {
 			return value
@@ -51,7 +52,7 @@ func NewMongoService(
 		return defaultValue
 	}
 
-	svc := &mongoSvc{}
+	svc := &mongoSvc[DocType]{}
 	svc.MongoServiceConfig = config
 
 	if svc.ServerHost == "" {
@@ -77,7 +78,7 @@ func NewMongoService(
 	}
 
 	if svc.DbName == "" {
-		svc.DbName = enviro("AMBULANCE_API_MONGODB_DBNAME", "<pfx>-ambulance-wl")
+		svc.DbName = enviro("AMBULANCE_API_MONGODB_DATABASE", "${templateOption:pfx}-ambulance-wl")
 	}
 
 	if svc.Collection == "" {
@@ -94,10 +95,18 @@ func NewMongoService(
 		}
 	}
 
+	log.Printf(
+		"MongoDB config: //%v@%v:%v/%v/%v",
+		svc.UserName,
+		svc.ServerHost,
+		svc.ServerPort,
+		svc.DbName,
+		svc.Collection,
+	)
 	return svc
 }
 
-func (this *mongoSvc) connect(ctx context.Context) (*mongo.Client, error) {
+func (this *mongoSvc[DocType]) connect(ctx context.Context) (*mongo.Client, error) {
 	// optimistic check
 	client := this.client.Load()
 	if client != nil {
@@ -130,7 +139,7 @@ func (this *mongoSvc) connect(ctx context.Context) (*mongo.Client, error) {
 	}
 }
 
-func (this *mongoSvc) disconnect(ctx context.Context) error {
+func (this *mongoSvc[DocType]) Disconnect(ctx context.Context) error {
 	client := this.client.Load()
 
 	if client != nil {
@@ -148,16 +157,19 @@ func (this *mongoSvc) disconnect(ctx context.Context) error {
 	return nil
 }
 
-func (this *mongoSvc) CreateDocument(ctx context.Context, id string, document interface{}) error {
+func (this *mongoSvc[DocType]) CreateDocument(ctx context.Context, id string, document *DocType) error {
 	ctx, contextCancel := context.WithTimeout(ctx, this.Timeout)
 	defer contextCancel()
 	client, err := this.connect(ctx)
+	if err != nil {
+		return err
+	}
 	db := client.Database(this.DbName)
 	collection := db.Collection(this.Collection)
 	result := collection.FindOne(ctx, bson.D{{Key: "id", Value: id}})
 	switch result.Err() {
 	case nil: // no error means there is conflicting document
-		return ConflictError
+		return ErrConflict
 	case mongo.ErrNoDocuments:
 		// do nothing, this is expected
 	default: // other errors - return them
@@ -168,7 +180,7 @@ func (this *mongoSvc) CreateDocument(ctx context.Context, id string, document in
 	return err
 }
 
-func (this *mongoSvc) FindDocument(ctx context.Context, id string) (interface{}, error) {
+func (this *mongoSvc[DocType]) FindDocument(ctx context.Context, id string) (*DocType, error) {
 	ctx, contextCancel := context.WithTimeout(ctx, this.Timeout)
 	defer contextCancel()
 	client, err := this.connect(ctx)
@@ -181,18 +193,18 @@ func (this *mongoSvc) FindDocument(ctx context.Context, id string) (interface{},
 	switch result.Err() {
 	case nil:
 	case mongo.ErrNoDocuments:
-		return nil, NotFoundError
+		return nil, ErrNotFound
 	default: // other errors - return them
 		return nil, result.Err()
 	}
-	var document interface{}
+	var document *DocType
 	if err := result.Decode(&document); err != nil {
 		return nil, err
 	}
 	return document, nil
 }
 
-func (this *mongoSvc) UpdateDocument(ctx context.Context, id string, document interface{}) error {
+func (this *mongoSvc[DocType]) UpdateDocument(ctx context.Context, id string, document *DocType) error {
 	ctx, contextCancel := context.WithTimeout(ctx, this.Timeout)
 	defer contextCancel()
 	client, err := this.connect(ctx)
@@ -205,7 +217,7 @@ func (this *mongoSvc) UpdateDocument(ctx context.Context, id string, document in
 	switch result.Err() {
 	case nil:
 	case mongo.ErrNoDocuments:
-		return NotFoundError
+		return ErrNotFound
 	default: // other errors - return them
 		return result.Err()
 	}
@@ -213,7 +225,7 @@ func (this *mongoSvc) UpdateDocument(ctx context.Context, id string, document in
 	return err
 }
 
-func (this *mongoSvc) DeleteDocument(ctx context.Context, id string) error {
+func (this *mongoSvc[DocType]) DeleteDocument(ctx context.Context, id string) error {
 	ctx, contextCancel := context.WithTimeout(ctx, this.Timeout)
 	defer contextCancel()
 	client, err := this.connect(ctx)
@@ -226,7 +238,7 @@ func (this *mongoSvc) DeleteDocument(ctx context.Context, id string) error {
 	switch result.Err() {
 	case nil:
 	case mongo.ErrNoDocuments:
-		return NotFoundError
+		return ErrNotFound
 	default: // other errors - return them
 		return result.Err()
 	}

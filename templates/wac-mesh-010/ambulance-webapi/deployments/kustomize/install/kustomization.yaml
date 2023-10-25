@@ -11,6 +11,5 @@ configMapGenerator:
       - params/init-db.js
   - name: ${templateOption:pfx}-ambulance-webapi-config
     literals:
-      - database=ambulance
+      - database=${templateOption:pfx}-ambulance
       - collection=ambulance
-

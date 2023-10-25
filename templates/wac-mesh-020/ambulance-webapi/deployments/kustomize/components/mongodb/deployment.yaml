@@ -15,10 +15,10 @@ spec:
       volumes:
         - name: db-data
           persistentVolumeClaim:
-            claimName: mongo-pvc
+            claimName: mongodb-pvc
       containers:
         - name: *PODNAME
-          image: mongodb:latest
+          image: mongo:latest
           imagePullPolicy: Always
           ports:
             - name: mongodb-port
@@ -39,8 +39,8 @@ spec:
                   key: password
           resources:
             requests:
-              memory: "1GB"
+              memory: "1Gi"
               cpu: "0.1"
             limits:
-              memory: "4GB"
+              memory: "4Gi"
               cpu: "0.5"

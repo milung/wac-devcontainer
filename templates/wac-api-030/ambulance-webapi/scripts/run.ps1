@@ -6,6 +6,8 @@ if (-not $command)  {
     $command = "start"
 }
 
+$env:AMBULANCE_API_ENVIRONMENT="Development"
+$env:AMBULANCE_API_PORT="8080"
 $env:AMBULANCE_API_MONGODB_USERNAME="root"
 $env:AMBULANCE_API_MONGODB_PASSWORD="neUhaDnes"
 
@@ -13,12 +15,13 @@ $env:AMBULANCE_API_MONGODB_PASSWORD="neUhaDnes"
 $ProjectRoot = "${PSScriptRoot}/.."
 
 function mongo {
+    
     docker compose --file ${ProjectRoot}/deployments/docker-compose/compose.yaml $args
 }
 
 switch ($command) {
     "openapi" {
-        docker run --rm -v ${ProjectRoot}:/local openapitools/openapi-generator-cli:${templateOption:openApiCliImgVersion} generate -c /local/scripts/generator-cfg.yaml 
+        docker run --rm  -v ${ProjectRoot}:/local openapitools/openapi-generator-cli:${templateOption:openApiCliImgVersion} generate -c /local/scripts/generator-cfg.yaml 
     }
     "start" {
         try {

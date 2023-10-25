@@ -12,7 +12,7 @@ const retrySeconds = parseInt(process.env.RETRY_CONNECTION_SECONDS || "5") || 5;
 
 // try to connect to mongoDB until it is not available
 let connection;
-while(true) {
+while (true) {
     try {
         connection = Mongo(`mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:${mongoPort}`);
         break;
@@ -25,10 +25,11 @@ while(true) {
 
 // if database and collection exists, exit with success - already initialized
 const databases = connection.getDBNames()
-if (databases.includes(database)) {    
+if (databases.includes(database)) {
     const dbInstance = connection.getDB(database)
     collections = dbInstance.getCollectionNames()
     if (collections.includes(collection)) {
+        print(`Collection '${collection}' already exists in database '${database}'`)
         process.exit(0);
     }
 }
@@ -39,21 +40,25 @@ const db = connection.getDB(database)
 db.createCollection(collection)
 
 // create indexes
-db[collection].createIndex({ "ambulance": "id" })
+db[collection].createIndex({ "id": 1 })
 
 //insert sample data
-db[collection].insertMany([
-    {   
-        id: "bobulova",
-        name: "Dr.Bobulová",
-            roomNumber: "123",
-            predefinedConditions: (
-                { value: "Nádcha", code: "rhinitis" },
-                { value: "Kontrola", code: "checkup" }
-            )
-        
+let result = db[collection].insertMany([
+    {
+        "id": "bobulova",
+        "name": "Dr.Bobulová",
+        "roomNumber": "123",
+        "predefinedConditions": [
+            { "value": "Nádcha", "code": "rhinitis" },
+            { "value": "Kontrola", "code": "checkup" }
+        ]
     }
 ]);
+
+if (result.writeError) {
+    console.error(result)
+    print(`Error when writing the data: ${result.errmsg}`)
+}
 
 // exit with success
 process.exit(0);
