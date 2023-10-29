@@ -115,23 +115,23 @@ if (this.errorMessage) {
           <md-filled-text-field label="Meno a Priezvisko"
             required value={this.entry?.name}
             oninput={(ev: InputEvent) => { if (this.entry) { this.entry.name = this.handleInputEvent(ev) } }}>
-          <md-icon slot="leadingicon">person</md-icon>
+          <md-icon slot="leading-icon">person</md-icon>
         </md-filled-text-field>
 
         <md-filled-text-field label="Registračné číslo pacienta"
             required value={this.entry?.patientId}
             oninput={(ev: InputEvent) => { if (this.entry) { this.entry.patientId = this.handleInputEvent(ev) } }}>
-          <md-icon slot="leadingicon">fingerprint</md-icon>
+          <md-icon slot="leading-icon">fingerprint</md-icon>
         </md-filled-text-field>
 
         <md-filled-text-field label="Čakáte od" disabled
             value={ new Date(this.entry?.waitingSince || Date.now()).toLocaleTimeString()}>
-          <md-icon slot="leadingicon">watch_later</md-icon>
+          <md-icon slot="leading-icon">watch_later</md-icon>
         </md-filled-text-field>
 
           <md-filled-text-field label="Predpokladaný čas vyšetrenia" disabled
             value={new Date(this.entry?.estimatedStart || Date.now()).toLocaleTimeString()}>
-            <md-icon slot="leadingicon">login</md-icon>
+            <md-icon slot="leading-icon">login</md-icon>
           </md-filled-text-field>
 
         {this.renderConditions()}
@@ -174,40 +174,38 @@ if (this.errorMessage) {
     );
   }
 
-private renderConditions() {
-    let conditions = this.conditions || [];
-
-    // we want to have entry condition in the selection list
-    if (this.entry?.condition) {
-      const index = conditions.findIndex(condition => condition.code === this.entry.condition.code)
-      if (index < 0) {
-        conditions = [this.entry.condition, ...conditions]
-      }
-    }
-    return (
-      <md-filled-select label="Dôvod návštevy"
-        displayText={this.entry?.condition?.value}
-        oninput={(ev: InputEvent) => this.handleCondition(ev)} >
-        <md-icon slot="leadingicon">sick</md-icon>
-        {this.entry?.condition?.reference
-        ? <md-icon slot="trailingicon" class="link"
-            onclick={()=> window.open(this.entry.condition.reference, "_blank")}>
-              open_in_new
-            </md-icon>
-        : undefined
-        }
-        {conditions.map(condition => {
-          return (
-            <md-select-option
-              value={condition.code} headline={condition.value}
-              selected={condition.code === this.entry?.condition?.code}>
-            </md-select-option>
-          )
-        }
-
-        )}
-      </md-filled-select>
-    );
+private renderConditions() {   
+    let conditions = this.conditions || [];   
+    // we want to have this.entry`s condition in the selection list   
+    if (this.entry?.condition) {   
+       const index = conditions.findIndex(condition => condition.code === this.entry.condition.code)   
+       if (index < 0) {   
+       conditions = [this.entry.condition, ...conditions]   
+       }   
+    }   
+    return (   
+       <md-filled-select label="Dôvod návštevy"   
+        display-text={this.entry?.condition?.value}   
+        oninput={(ev: InputEvent) => this.handleCondition(ev)} >   
+       <md-icon slot="leading-icon">sick</md-icon>   
+       {this.entry?.condition?.reference ? 
+        <md-icon slot="trailing-icon" class="link"   
+          onclick={()=> window.open(this.entry.condition.reference, "_blank")}>   
+            open_in_new   
+        </md-icon>   
+       : undefined   
+       }   
+       {conditions.map(condition => {   
+          return (   
+             <md-select-option   
+             value={condition.code} 
+             selected={condition.code === this.entry?.condition?.code}>
+                <div slot="headline">{condition.value}</div>
+             </md-select-option> 
+          )   
+       })}   
+       </md-filled-select>   
+    );   
   }
 
   private handleCondition(ev: InputEvent) {
