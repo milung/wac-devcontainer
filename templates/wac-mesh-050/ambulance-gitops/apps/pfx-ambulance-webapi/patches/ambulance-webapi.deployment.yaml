@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${templateOption:pfx}-ambulance-webapi 
+spec:
+  template:
+    spec:
+      containers:
+        - name: openapi-ui
+          env:
+            - name: URL
+              value: /${templateOption:pfx}-openapi
+            - name: BASE_URL
+              value: /${templateOption:pfx}-openapi-ui
