@@ -35,5 +35,10 @@
     // docker images
     "ciNodeVersion": "20.x",
     "nodeImageTag": "latest",
-    "openApiCliImgVersion": "v7.0.1"
+    "openApiCliImgVersion": "v7.0.1",
+
+    // oauth proxy config 
+    "gitClientId": "0123456789abcdef",
+    "gitClientSecret": "0123456789abcdef",
+    "oauth2CookieSecret": "0123456789abcdef"
 }

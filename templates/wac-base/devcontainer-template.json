@@ -151,6 +151,21 @@
             "type": "string",
             "default": "v7.0.1",
             "description": "OpenApi Generator CLI image version"
+        },
+        "gitClientId": {
+            "type": "string",
+            "default": "someclientid",
+            "description": "GitHub OAuth2 App`s Client ID"
+        },
+        "gitClientSecret": {
+            "type": "string",
+            "default": "someclientsecret",
+            "description": "GitHub OAuth2 App`s Client Secret"
+        },
+        "oauth2CookieSecret": {
+            "type": "string",
+            "default": "0123456789abcdef",
+            "description": "oauth2-proxy session˙s Cookie Secret"
         }
     },
     
