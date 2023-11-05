@@ -210,6 +210,7 @@ if (this.errorMessage) {
 
   private handleCondition(ev: InputEvent) {
     if (this.entry) {
+      this.entry.condition = {} as Condition;
       this.entry.condition.code = this.handleInputEvent(ev)
       const condition = this.conditions.find(condition => condition.code === this.entry.condition.code);
       this.entry.estimatedDurationMinutes = condition.typicalDurationMinutes;
