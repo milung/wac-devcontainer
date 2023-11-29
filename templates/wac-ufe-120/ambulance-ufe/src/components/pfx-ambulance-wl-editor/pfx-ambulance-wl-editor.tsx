@@ -7,10 +7,10 @@ import { AmbulanceConditionsApiFactory, AmbulanceWaitingListApiFactory, Conditio
   styleUrl: 'pfx-ambulance-wl-editor.css',
   shadow: true,
 })
-export class ${templateOption:PfxCamel}AmbulanceWlEditor { 
+export class ${templateOption:PfxCamel}AmbulanceWlEditor {
 
   @Prop() entryId: string;
-@Prop() ambulanceId: string;
+  @Prop() ambulanceId: string;
   @Prop() apiBase: string;
 
   @Event({ eventName: "editor-closed" }) editorClosed: EventEmitter<string>;
@@ -82,7 +82,7 @@ export class ${templateOption:PfxCamel}AmbulanceWlEditor {
   }
 
   render() {
-if (this.errorMessage) {
+    if (this.errorMessage) {
       return (
         <Host>
           <div class="error">{this.errorMessage}</div>
@@ -149,18 +149,18 @@ if (this.errorMessage) {
     );
   }
 
-private renderConditions() {   
-    let conditions = this.conditions || [];   
+  private renderConditions() {
+    let conditions = this.conditions || [];
     // we want to have this.entry`s condition in the selection list   
-    if (this.entry?.condition) {   
-       const index = conditions.findIndex(condition => condition.code === this.entry.condition.code)   
-       if (index < 0) {   
-       conditions = [this.entry.condition, ...conditions]   
-       }   
-    }   
-    return (   
-       <md-filled-select label="Dôvod návštevy"   
-        display-text={this.entry?.condition?.value}   
+    if (this.entry?.condition) {
+       const index = conditions.findIndex(condition => condition.code === this.entry.condition.code)
+       if (index < 0) {
+       conditions = [this.entry.condition, ...conditions]
+       }
+    }
+    return (
+       <md-filled-select label="Dôvod návštevy"
+        display-text={this.entry?.condition?.value}
         oninput={(ev: InputEvent) => this.handleCondition(ev)} >   
        <md-icon slot="leading-icon">sick</md-icon>   
        {this.entry?.condition?.reference ? 

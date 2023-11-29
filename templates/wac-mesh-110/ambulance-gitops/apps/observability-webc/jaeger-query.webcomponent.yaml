@@ -1,0 +1,17 @@
+apiVersion: fe.milung.eu/v1
+kind: WebComponent
+metadata:
+  name: jaeger
+spec:
+  module-uri: built-in
+  navigation:
+  - attributes:
+    - name: src
+      value: /jaeger
+    details: Analýza spracovania požiadaviek v distribuovanom systéme
+    element: ufe-frame
+    path: jaeger
+    priority: 0
+    title: Distribuované trasovanie
+  preload: false
+  proxy: true

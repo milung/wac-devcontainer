@@ -7,6 +7,7 @@
     "dockerhubAccount": "milung",
     "githubAccount": "milung",
     "githubPAT": "your PAT",
+    "userEmail": "your@email.com",
 
     // npm versions
     "axiosMockAdapterVersion": "1.22.0",

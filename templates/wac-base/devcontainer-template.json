@@ -18,6 +18,11 @@
             "description": "Student's prefix for CamelCase names to diferentiate artifacts when deployed to single cluster"
         },
     
+        "userEmail": {
+            "type": "string",
+            "default": "your@email.com",
+            "description": "Student's email address, used to login into github and wac hospital application"
+        },
         "dockerhubAccount": {
             "type": "string",
             "default": "<your dockerhub account>",

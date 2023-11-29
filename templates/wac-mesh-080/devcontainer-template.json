@@ -1,0 +1,152 @@
+{
+  "id": "wac-mesh-080",
+  "name": "WAC Mesh (Step 090)",
+  "description": "Service Mesh - Zber a analýza logov s Fluentbit a OpenSearch",
+  "documentationURL": "https://wac-fiit.milung.eu/dojo/03.ServiceMesh/080-log-analytics",
+  "platforms": [
+    "Any"
+  ],
+  "version": "1.0.2",
+  "options": {
+    "pfx": {
+      "type": "string",
+      "default": "wac",
+      "description": "Student's prefix to diferentiate artifacts when deployed to single cluster"
+    },
+    "PfxCamel": {
+      "type": "string",
+      "default": "Wac",
+      "description": "Student's prefix for CamelCase names to diferentiate artifacts when deployed to single cluster"
+    },
+    "dockerhubAccount": {
+      "type": "string",
+      "default": "<your dockerhub account>",
+      "description": "Student's DockerHub account name to pull images from"
+    },
+    "githubAccount": {
+      "type": "string",
+      "default": "<your github account>",
+      "description": "Student's GitHub account name where his code is stored"
+    },
+    "githubPAT": {
+      "type": "string",
+      "default": "<your github PAT>",
+      "description": "Student's GitHub Personal Access Token for GitOps purposes (pull ambulance-gitops and push image updates into ambulance-gitops)"
+    },
+    "axiosMockAdapterVersion": {
+      "type": "string",
+      "default": "1.22.0",
+      "description": "NPM version of axios-mock-adapter"
+    },
+    "axiosVersion": {
+      "type": "string",
+      "default": "1.5.1",
+      "description": "NPM version of axios"
+    },
+    "babelJestVersion": {
+      "type": "string",
+      "default": "1.5.1",
+      "description": "NPM version of babel-jest"
+    },
+    "babelPresetEnvVersion": {
+      "type": "string",
+      "default": "7.22.20",
+      "description": "NPM version of babel-preset-env"
+    },
+    "jestcliVersion": {
+      "type": "string",
+      "default": "27.5.1",
+      "description": "NPM version of jest-cli"
+    },
+    "jestVersion": {
+      "type": "string",
+      "default": "27.5.1",
+      "description": "NPM version of jest"
+    },
+    "jsYamlVersion": {
+      "type": "string",
+      "default": "4.1.0",
+      "description": "NPM version of js-yaml"
+    },
+    "materialWebVersion": {
+      "type": "string",
+      "default": "1.0.0",
+      "description": "NPM version of @material/web"
+    },
+    "npmRunAllVersion": {
+      "type": "string",
+      "default": "4.1.5",
+      "description": "NPM version of npm-run-all"
+    },
+    "openApiGeneratorCliVersion": {
+      "type": "string",
+      "default": "2.7.0",
+      "description": "NPM version of @openapitools/openapi-generator-cli"
+    },
+    "openApiMockerVersion": {
+      "type": "string",
+      "default": "2.0.0",
+      "description": "NPM version of openapi-mocker"
+    },
+    "puppeteerVersion": {
+      "type": "string",
+      "default": "21.1.1",
+      "description": "NPM version of puppeteer"
+    },
+    "stencilCoreVersion": {
+      "type": "string",
+      "default": "4.4.0",
+      "description": "NPM version of @stencil/core"
+    },
+    "tsJestVersion": {
+      "type": "string",
+      "default": "27.1.4",
+      "description": "NPM version of ts-jest"
+    },
+    "typesJestVersion": {
+      "type": "string",
+      "default": "27.5.2",
+      "description": "NPM version of @types/jest"
+    },
+    "typesNodeVersion": {
+      "type": "string",
+      "default": "16.18.11",
+      "description": "NPM version of @types/node"
+    },
+    "goVersion": {
+      "type": "string",
+      "default": "1.21",
+      "description": "Go version used in webapi"
+    },
+    "ginGonicVersion": {
+      "type": "string",
+      "default": "v1.9.1",
+      "description": "Go version of gin-gonic"
+    },
+    "googleUuidVersion": {
+      "type": "string",
+      "default": "v1.3.0",
+      "description": "Go version of google/uuid"
+    },
+    "mongoDriverVersion": {
+      "type": "string",
+      "default": "v1.12.1",
+      "description": "Go version of mongo-driver"
+    },
+    "ciNodeVersion": {
+      "type": "string",
+      "default": "20.x",
+      "description": "Node Image label used in Continuous integration"
+    },
+    "nodeImageTag": {
+      "type": "string",
+      "default": "latest",
+      "description": "Node Image tag used in docker build"
+    },
+    "openApiCliImgVersion": {
+      "type": "string",
+      "default": "v7.0.1",
+      "description": "OpenApi Generator CLI image version"
+    }
+  }
+}

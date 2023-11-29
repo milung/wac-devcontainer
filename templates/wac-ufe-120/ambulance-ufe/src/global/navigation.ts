@@ -40,7 +40,7 @@ export function registerNavigationApi() {
     if (!window.navigation) {
         // simplified version of navigation api
         window.navigation = new EventTarget();
-        const oldPushState = window.history.pushState.bind(window.history);;
+        const oldPushState = window.history.pushState.bind(window.history);
 
         window.history.pushState = (f => function pushState() {
             var ret = f.apply(this, arguments);
